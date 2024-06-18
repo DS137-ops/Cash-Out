@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 var uri = "mongodb://localhost:27017/bills",
-globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mongodb.net/bills?retryWrites=true&w=majority&appName=Cluster0"
     bcrypt = require('bcrypt'),
     {isEmail} = require('validator')
     ;
