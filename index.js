@@ -1,9 +1,13 @@
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const session = require('express-session')
+
+var globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+localConnect = "mongodb://localhost:27017/bills"
+
 const MongoStrore = require("connect-mongodb-session")(session)
 var Store = new MongoStrore({
-    uri: "mongodb://localhost:27017/bills",
+    uri:globalconnect,
     collection: "sessions"
 })
 
