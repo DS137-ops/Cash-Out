@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 var uri = "mongodb://localhost:27017/bills",
+globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     bcrypt = require('bcrypt'),
     {isEmail} = require('validator')
     ;
@@ -24,7 +25,7 @@ var newSchema = mongoose.Schema({
 var users = mongoose.model('users', newSchema)
 exports.postdatamodel = (name, email, password, city) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(() => {
+        mongoose.connect(globalconnect).then(() => {
             return users.findOne({ email: email })
         }).then((user) => {
             if (user) {
@@ -54,7 +55,7 @@ exports.postdatamodel = (name, email, password, city) => {
 
 exports.userloginmodel = (email, password) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(() => {
+        mongoose.connect(globalconnect).then(() => {
             return users.findOne({ email: email })
         }).then((user) => {
             if (user) {
@@ -76,7 +77,7 @@ exports.userloginmodel = (email, password) => {
             reject(err)})})}
 exports.gethomedata = (id) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(() => {
+        mongoose.connect(globalconnect).then(() => {
             return users.findById(id)
         }).then((userdata) => {
             mongoose.disconnect()
