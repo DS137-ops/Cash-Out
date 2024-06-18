@@ -1,0 +1,273 @@
+<%- include('parts/top.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <style>
+            body {
+                background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+                transition: 1s all ease-in-out;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows: minmax(200px, auto);
+                grid-template-areas:
+                    ". div1 div1 div1 div1 . . div2 div2 div2 div2 ."
+                    ". div1 div1 div1 div1 . . div2 div2 div2 div2 ."
+                    ". div1 div1 div1 div1 . . div2 div2 div2 div2 ."
+                    ". . . . . . . . . . . ."
+                    ". div3 div3 div3 div3 div3 div3 div3 div3 div3 div3 ."
+                ;
+                grid-gap: 25px;
+            }
+
+            .div1 {
+                grid-area: div1;
+                padding: 10px;
+                grid-column: 1/8;
+                color: aliceblue;
+                font-size: 18px;
+                z-index: 1;
+                animation: 1s ease-out 0s 1 loading;
+            }
+
+            @keyframes loading {
+                0% {
+                    transform: translateX(-200%);
+                }
+            }
+
+            .div2 {
+                grid-area: div2;
+                grid-column: 8/12;
+                animation: 1s ease-out 0s 1 loading2;
+            }
+
+            @keyframes loading2 {
+                0% {
+                    transform: translateX(200%);
+                }
+            }
+
+            .div3 {
+                grid-area: div3;
+                margin-top: -100px;
+                display: flex;
+                
+            }
+
+            .img1 {
+                width: 100%;
+                height: 100%;
+            }
+
+            @media (max-width:768px) {
+                .grid {
+                    display: block;
+
+                }
+
+                .box~ :nth-child(2),
+                .box~ :nth-child(3) {
+                    margin-top: 20px;
+                }
+            }
+
+            .innerdiv {
+                width: 33%;
+                height: 300px;
+                margin-left: 20px;
+                background-color: aquamarine;
+                border-radius: 30px;
+            }
+
+            .innerdiv:hover {
+                transform: scale(1.1, 1.1);
+            }
+
+            .inner1 {
+                animation: innerani1 1s alternate;
+                transition: .5s all ease-out;
+            }
+
+            .inner2 {
+                animation: innerani2 1s alternate;
+                transition: .5s all ease-out;
+            }
+
+            .inner3 {
+                animation: innerani3 1s alternate;
+                transition: .5s all ease-out;
+            }
+
+            @keyframes innerani1 {
+                0% {
+                    transform: translateX(-200%);
+                }
+
+                100% {}
+            }
+
+            @keyframes innerani2 {
+                0% {
+                    transform: translateY(200%);
+                }
+
+                100% {}
+            }
+
+            @keyframes innerani3 {
+                0% {
+                    transform: translateX(200%);
+                }
+
+                100% {}
+            }
+
+            strong {
+                font-size: 30px;
+
+            }
+
+            @media (max-width:767px) {
+                .div3 {
+                    display: block;
+
+                }
+
+                .div3 div {
+                    width: 100%;
+                    margin-top: 20px;
+                    margin-left: 0px;
+
+                }
+            }
+
+            .header {
+                text-align: center;
+                border-bottom: 2px solid #302b63;
+            }
+
+            .c_char {
+                color: rgb(0, 72, 255);
+                font-size: 30px;
+            }
+
+            .ache {
+                font-size: 25px;
+            }
+
+            .review {
+                color: blue;
+            }
+
+
+
+
+
+
+
+
+
+            @import url('https://fonts.googleapis.com/css?family=Coiny');
+.cloud-text {
+ 
+	font-family: 'Coiny', cursive;
+	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;	
+	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/769286/clouds.jpg);
+	background-size: auto;
+	background-attachment: unset;
+	background-position: 0%;
+	width: 100%;
+	margin: 10%;
+	font-size: 120px;
+	animation: clouds-moving infinite 220s;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: linear;
+	text-align: center;
+}
+@keyframes clouds-moving {
+	0% {
+		background-position: 0%;	
+	}
+	50% {
+		background-position: 100%;	
+	}
+	100% {
+		background-position: 0%;
+	}
+}
+.attribute {
+	position: relative;
+	font-size: 26px;
+	text-align: center;
+}
+
+        </style>
+    </head>
+
+    <body onclick="hiddmenu()">
+        <div class="grid">
+            <div class="box div1"><strong class="review">Review</strong><br> Welcome to our efficient and user-friendly
+                bills management website! Take control of your finances and stay organized with our comprehensive
+                platform designed to simplify the process of tracking and managing your bills.start managing your bills
+                effortlessly today!<br> <br>Telecommunication companies need an effective and accurate billing system to
+                be able to assure their revenue. Billing systems process the usage of network equipment that is used
+                during the service usage into a single Call Detail Record (CDR). The billing process involves receiving
+                billing records from various networks, determining the billing rates associated with the billing
+                records, calculating the cost for each billing record, aggregating these records periodically to
+                generate invoices, sending invoices to the customer, and collecting payments received from the customer.
+
+                Billing system is very complex starting from network elements that generate usage to the billing system
+                to usage collection, mediation, rating, and invoicing. To simplify the process I will introduce a simple
+                system usage scenario as shown in the following figure. The system user navigates through the company
+                site and views company services, and he decides to order one of the available services. If he has no
+                account, he signs up for a new account, else he signs in. Then the user asks to conduct an order with
+                the selected service. The service may be prepaid where he has to pay to have credits to use the service,
+                or it may be postpaid, where he has to pay if the service has installation or setup fees, and later on
+                he will pay for his usage of each billing cycle.<br><strong class="c_char">C</strong><span
+                    class="ache">ash out</span> allows you to store your invoices remotely and manage them within a
+                secure database.
+                The site includes several types of bills: electricity, communications, and others.</div>
+            <div class="box div2">
+                <img src="/bill1-removebg-preview.png" alt="" class="img1">
+            </div>
+            <div class="box div3">
+                <p class="cloud-text cloud-title">Cash Out Site</p>
+                <!-- <div class="innerdiv inner1">
+                    <header class="header header_1">producting1</header>
+                </div>
+                <div class="innerdiv inner2">
+                    <header class="header header_2">producting2</header>
+
+
+                </div>
+                <div class="innerdiv inner3">
+                    <header class="header header_3">producting3</header>
+                </div> -->
+            </div>
+        </div>
+        <br>
+        <br>
+        <script>
+        </script>
+    </body>
+
+    </html>
+
+    <br><br><br>
+    <%- include('parts/bottom.ejs') %>

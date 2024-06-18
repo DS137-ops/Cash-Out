@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>cash out</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    li {
+      padding-left: 20px;
+      color: white
+    }
+
+    li a {
+      font-size: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    li a:hover {
+      border-bottom: 3px solid blue;
+      padding-bottom: 10px;
+      color: #fff;
+      transition: .2s all ease-in-out;
+    }
+
+    .username {
+      font-size: 30px;
+    }
+
+    @media (max-width:768px) {
+      .username {
+        right: 20px;
+        top: 45%;
+      }
+    }
+
+    .hiddenli {
+      display: none;
+    }
+
+    .keyframe div {
+      border-bottom: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="position: fixed; width: 100%; z-index: 90;">
+    <a class="navbar-brand cache" href="/" style="font-size: 50px;"><span
+        style="color: blue;font-weight: 600;">Cash</span> Out <svg style=" margin-top:-5px ;width: 50px; height: 50px;"
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="Bank">
+        <path
+          style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;white-space:normal;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1"
+          d="M16.352 2.172c-2.34 0-4.243 1.873-4.315 4.195a4.474 4.474 0 0 0-2.06-.537.5.5 0 0 0-.004 0c-.402 0-.806.048-1.202.154a.5.5 0 0 0-.001 0 4.499 4.499 0 0 0-3.19 3.227.5.5 0 0 0 .55.621 3.476 3.476 0 0 1 2.528.658 10.305 10.305 0 0 0-2.078 2.34H5.104c-1.7 0-3.104 1.336-3.104 3v2c0 1.664 1.403 3 3.104 3h.9c.824 1.707 2.206 3.16 3.996 4.211v4.29a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-2.813c.843.165 1.694.309 2.56.312a.5.5 0 0 0 .003 0c1.176 0 2.32-.237 3.437-.535v3.035a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-4.82c2.5-1.786 3.997-4.395 4-7.18 0-2.448-1.11-4.665-2.918-6.34-.008-.02-.103-.248-.082-.697v-.022c.008-.304.139-.623.365-.875.096-.106.272-.133.4-.216.057.338.125.675.276.974.17.336.397.666.711.94.316.275.713.487 1.162.564.45.078.939.018 1.357-.244h.002c.206-.127.385-.295.516-.506.133-.213.21-.462.211-.722.001-.476-.235-.847-.465-1.127a3.505 3.505 0 0 0-1.445-1.047c-.342-.132-.72-.086-1.09-.104.123-.22.198-.462.406-.625.35-.272.82-.442 1.291-.463a.5.5 0 0 0-.043-1v.01a3.278 3.278 0 0 0-1.863.674c-.526.41-.9.982-1.043 1.617-.405.159-.833.291-1.125.615-.35.388-.565.878-.607 1.395a12.168 12.168 0 0 0-3.764-1.79 4.27 4.27 0 0 0 .43-1.841 4.337 4.337 0 0 0-4.33-4.328zm0 1a3.322 3.322 0 0 1 3.33 3.328 3.323 3.323 0 0 1-3.33 3.33 3.322 3.322 0 0 1-3.329-3.33 3.32 3.32 0 0 1 3.329-3.328zm-.22.432v.511a1.892 1.892 0 0 0-.528.14c-.158.07-.293.16-.405.268a1.156 1.156 0 0 0-.254.387c-.057.148-.086.31-.086.488 0 .194.034.366.1.514a1.2 1.2 0 0 0 .293.39c.129.114.282.215.463.3.183.082.392.155.62.218.173.057.318.115.438.176.124.061.223.127.297.2.078.071.134.149.168.232a.69.69 0 0 1 .051.27.775.775 0 0 1-.064.32.668.668 0 0 1-.188.242.89.89 0 0 1-.303.154c-.117.035-.252.05-.404.05-.109 0-.217-.012-.326-.04a.777.777 0 0 1-.297-.15.769.769 0 0 1-.215-.292 1.134 1.134 0 0 1-.082-.46h-.758c0 .245.04.458.118.634.077.174.18.318.308.434.132.115.284.203.453.264.17.06.343.1.524.12v.42h.6v-.42c.214-.021.407-.065.58-.13.171-.066.316-.151.437-.26a1.15 1.15 0 0 0 .281-.387c.066-.15.098-.318.098-.506 0-.191-.03-.36-.094-.505a1.102 1.102 0 0 0-.28-.385 1.807 1.807 0 0 0-.456-.291 4.235 4.235 0 0 0-.623-.229 3.623 3.623 0 0 1-.465-.18 1.432 1.432 0 0 1-.301-.199.637.637 0 0 1-.168-.228.97.97 0 0 1 0-.594.646.646 0 0 1 .404-.394c.1-.037.22-.057.358-.057.132 0 .248.024.351.074.104.05.191.12.26.21a.92.92 0 0 1 .154.316c.038.121.055.256.055.402H18c0-.442-.111-.79-.332-1.045-.218-.257-.526-.412-.928-.467v-.515h-.607zM9.97 6.83c.845.01 1.626.32 2.236.84a4.324 4.324 0 0 0 1.15 1.94c.016.072.023.146.034.22H13a.5.5 0 1 0 0 1h7a.5.5 0 1 0 0-1h-.918a4.34 4.34 0 0 0 .605-.607C23.963 10.316 27 13.558 27 17.33c-.002 2.511-1.366 4.908-3.78 6.537a.5.5 0 0 0-.22.414v4.55h-2v-3.114a.5.5 0 0 0-.652-.477c-1.205.386-2.49.59-3.784.59-.998 0-1.99-.126-2.945-.36a.5.5 0 0 0-.619.487v2.873h-2v-4.027a.5.5 0 0 0-.26-.44c-1.875-1.029-3.279-2.518-4.02-4.232a.5.5 0 0 0-.458-.3H5.104c-1.186 0-2.104-.895-2.104-2v-2c0-1.107.918-2 2.104-2h1.675a.5.5 0 0 0 .428-.243c.55-.911 1.294-1.716 2.172-2.399.24.318.431.68.555 1.08a.5.5 0 1 0 .957-.294c-.216-.7-.596-1.3-1.082-1.784a.5.5 0 0 0-.11-.095A4.594 4.594 0 0 0 6.877 8.88c.436-.913 1.154-1.663 2.152-1.932.303-.08.619-.119.94-.119zm17.25 2.018c.176.012.348.044.511.107.408.157.767.425 1.032.748.157.192.238.375.238.49 0 .06-.02.13-.06.196a.595.595 0 0 1-.192.185h-.006c-.164.103-.419.145-.658.104h-.002a1.405 1.405 0 0 1-.672-.33 2.07 2.07 0 0 1-.476-.635 2.277 2.277 0 0 1-.247-.86 3.72 3.72 0 0 1 .532-.005zM10 13.828a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1z"
+          color="#000" enable-background="accumulate" font-family="sans-serif" font-weight="400" overflow="visible"
+          fill="#25a2d0" class="color000000 svgShape tamora"></path>
+      </svg></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
+      style="width: 100px; z-index: 99;">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav" style="margin: auto; ">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><img src="/homec.png" style="margin-top: -3px;" width="25" height="25" alt=""> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about"><img src="/info-button.png" style="margin-top: -3px;"  width="25" height="25" alt=""> About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/bills"> <img src="/invoice.png" width="25px" height="25px" style="margin-top: -3px;" alt=""> bills</a>
+        </li>
+        <% if(verifuser){ %>
+          <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0" method="POST" action="/logout">
+              <button class="btn btn-danger" style="margin: auto;  width: max-content;margin-top: 2px;">Logout</button>
+            </form>
+          </li>
+          <% } %>
+            <% if(verifuser){ %>
+              <li class="nav-item" onclick="showProfile()" style="cursor: pointer;">
+                <span class="username">
+                  <img src="/icons8-person-94.png" width="40px" height="40px" style="margin-bottom: 10px;" />
+                  <span>PROFILE</span>
+                  <img src="/downn.png" alt="" width="30px" height="30px" style="margin-left: -10px; margin-top: -5px;">
+                </span>
+                <div
+                  style="width: 200px; height: 200px;background-color: #fff; color: black; position:absolute; transition: .5s all ease-out ;padding: 10px; line-height: 45px;"
+                  class="keyframe liProfile hiddenli">
+                  <div> <img src="/icons8-person-94.png" width="20px" height="20px" />&nbsp;&nbsp;&nbsp;<%-
+                      userdata.name %></div>
+                  <div><img src="/icons8-location-40.png" width="20px" height="20px" alt="">&nbsp;&nbsp;&nbsp;<%-
+                      userdata.city %></div>
+                  <div><img src="/email.png" alt="" width="20px" height="20px">&nbsp;&nbsp;&nbsp;<%- userdata.email %>
+                  </div>
+                  <div><img src="/arrow-down-sign-to-navigate.png" alt="" width="20px" height="20px"
+                      style="margin-top: -2px;">&nbsp;&nbsp;&nbsp; Edit profile
+                  </div>
+                </div>
+              </li>
+              <% } %>
+      </ul>
+    </div>
+  </nav>
+  <script>
+    var i = 0;
+    var showProfile = () => {
+      var liProfile = document.getElementsByClassName("liProfile")[0];
+      if (i % 2 == 0) {
+
+        liProfile.style.display = "block";
+      }
+      else {
+        liProfile.style.display = "none";
+      }
+      i++;
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,508 @@
+    <%- include('parts/top.ejs') %>
+    <br><br><br><br>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+
+
+            }
+
+            * {
+                transition: all .2s ease-in-out;
+            }
+
+
+
+
+
+            .allBills {
+                position: relative;
+                width: 100%;
+                background-color: #343a40 !important;
+                z-index: 1;
+                border-top: 5px solid blue;
+                margin-top: 5px;
+
+            }
+
+            .divBillsAndImg {
+                width: 100%;
+                position: relative;
+                display: flex;
+                flex-direction: row;
+
+
+            }
+
+            .onlyDivBills {
+                width: 50%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                font-size: 20px;
+
+            }
+
+            .electricity,
+            .water,
+            .phone,
+            .net,
+            .otherBills,
+            .padget {
+                width: 100%;
+                height: 70px;
+                position: relative;
+                border-bottom: 1px solid white;
+                border-right: 1px solid white;
+                margin-top: 50px;
+            }
+
+            .electricity span,
+            .water span,
+            .phone span,
+            .net span,
+            .otherBills span,
+            .padget span {
+                color: white;
+                position: absolute;
+                margin-left: 10px;
+                margin-top: 15px;
+            }
+            .padget span{
+                font-size: 22px;
+            }
+            .padgeText{
+                color:#fff
+            }
+            .padgeText:focus{
+                border-bottom-color: #17224D;
+                color:aqua
+            }
+
+            .onlyImg {
+                width: 50%;
+                position: relative;
+                padding: 10px;
+
+            }
+
+            @media only screen and (max-width:850px) {
+                .onlyImg {
+                    display: none;
+                }
+
+                .onlyDivBills {
+                    width: 90%;
+                }
+            }
+
+            .contcat {
+                width: 100%;
+                position: relative;
+                padding: 15px;
+                background-repeat: no-repeat;
+                flex-direction: row;
+                justify-content: space-around;
+                background-color: #17224D;
+                border-radius: 2%;
+                -webkit-perspective: 800;
+                -webkit-perspective-origin: 50% 200px;
+                -moz-perspective: 800;
+                -moz-perspective-origin: 50% 200px;
+            }
+
+            .cubes {
+                display: flex;
+                width: 100%;
+                position: relative;
+            }
+
+            .cube {
+                position: relative;
+                margin: 100px auto 0;
+                height: 300px;
+                width: 300px;
+                -webkit-transition: -webkit-transform .5s linear;
+                -webkit-transform-style: preserve-3d;
+
+                -moz-transition: -moz-transform .5s linear;
+                -moz-transform-style: preserve-3d;
+            }
+
+            .face {
+                position: absolute;
+                text-align: center;
+                height: 200px;
+                width: 300px;
+                padding: 5px;
+                font-size: 15px;
+                line-height: 1em;
+                color: #fff;
+                border: 1px solid #555;
+                border-radius: 3px;
+                padding-top: 7px;
+            }
+
+            .cube .front {
+                -webkit-transform: translateZ(150px);
+                -moz-transform: translateZ(150px);
+                background-color: #343a40;
+            }
+
+            .cube .side {
+                -webkit-transform: rotateY(-90deg) translateZ(150px);
+                -moz-transform: rotateY(-90deg) translateZ(150px);
+                background-color: #555;
+                line-height: 30px;
+                padding: 5px;
+            }
+
+            .cube .side .connection {
+                margin-top: 20px;
+                width: 80%;
+
+            }
+
+            .cube:hover {
+                -webkit-transform: rotateY(90deg);
+            }
+
+            .lastP {
+                line-height: 20px;
+            }
+
+            @media(max-width:716px) {
+                .cubes {
+                    display: block;
+                }
+            }
+
+            .contact_header {
+                width: 100%;
+                text-align: center;
+                color: #fff;
+                font-size: 25px;
+                font-weight: bold;
+                height: auto;
+                position: absolute;
+            }
+
+            .about_website {
+                max-width: 500px;
+                color: whitesmoke;
+                font-size: 20px;
+                font-weight: 400;
+                font-family: Arial, Helvetica, sans-serif;
+                position: relative;
+                left: 50%;
+                padding: 1px;
+                margin-left: -250px;
+                margin-top: -50px;
+            }
+
+            .about_website:first-letter {
+                font-size: 30px;
+
+            }
+
+            .about_website strong {
+                font-size: 30px;
+                color: red;
+            }
+
+            .user_name {
+                font-size: 30px;
+                font-family: Arial, Helvetica, sans-serif;
+                color: white;
+                margin-right: 30px;
+                font-weight: 600;
+            }
+
+            .img_bill {
+                color: dodgerblue;
+            }
+
+            .moverow {
+                animation: rowanimation 1s infinite;
+                transition: .5s all ease-in-out;
+            }
+
+            .moverow1 {
+                animation: rowanimation1 1s infinite;
+                transition: .5s all ease-in-out;
+            }
+
+            .moverow2 {
+                animation: rowanimation2 1s infinite;
+                transition: .5s all ease-in-out;
+            }
+
+            .moverow3 {
+                animation: rowanimation3 1s infinite;
+                transition: .5s all ease-in-out;
+            }
+
+            .moverow4 {
+                animation: rowanimation4 1s infinite;
+                transition: .5s all ease-in-out;
+            }
+
+            @keyframes rowanimation {
+                0% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(150%);
+                }
+
+                100% {
+                    transform: translateX(0);
+
+                }
+            }
+
+            @keyframes rowanimation1 {
+                0% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(150%);
+                }
+
+                100% {
+                    transform: translateX(0);
+
+                }
+            }
+
+            @keyframes rowanimation2 {
+                0% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(150%);
+                }
+
+                100% {
+                    transform: translateX(0);
+
+                }
+            }
+
+            @keyframes rowanimation3 {
+                0% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(150%);
+                }
+
+                100% {
+                    transform: translateX(0);
+
+                }
+            }
+
+            @keyframes rowanimation4 {
+                0% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(150%);
+                }
+
+                100% {
+                    transform: translateX(0);
+
+                }
+            }
+
+.padgeText{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    border-bottom: 1px solid red;
+}
+
+            
+        </style>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <title>YourBills</title>
+    </head>
+
+    <body>
+        <div class="allBills">
+            <div class="divBillsAndImg">
+                <div class="onlyDivBills">
+                    <a class="electricity" onmouseover="onit()" onmouseleave="leaveit()" href="/elect">
+
+                        <span><svg style="width:50px ;height:40px; margin-top:-2px; color:yellow"
+                                xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z">
+                                </path>
+                            </svg>
+                            Electricity Bills&nbsp;<svg style="width: 30px; height:30px;"
+                                xmlns="http://www.w3.org/2000/svg" class="moveto h-10 w-10" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                                <path fill-rule="evenodd"
+                                    d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg> </span>
+                    </a><br>
+
+                    <a class="water" onmouseover="onit1()" onmouseleave="leaveit1()" href="/water">
+
+                        <span><svg style="width: 30px; height:30px; color:blue" xmlns="http://www.w3.org/2000/svg"
+                                class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z"
+                                    clip-rule="evenodd"></path>
+                            </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Water Bills &nbsp; <svg style="width: 30px; height:30px"
+                                xmlns="http://www.w3.org/2000/svg" class="moveto h-10 w-10" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                                <path fill-rule="evenodd"
+                                    d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg></span>
+                    </a><br>
+                    <a class="phone" onmouseover="onit2()" onmouseleave="leaveit2()"
+                        href="/phone">
+                        <span><svg style="width: 50px; height:40px;margin-top:-2px; color:smoke"
+                                xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z">
+                                </path>
+                            </svg>&nbsp;&nbsp;&nbsp;Phone Bills &nbsp; <svg style="width: 30px; height:30px"
+                                xmlns="http://www.w3.org/2000/svg" class="moveto h-10 w-10" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                                <path fill-rule="evenodd"
+                                    d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg> </span>
+                    </a><br>
+                    <a class="net" onmouseover="onit3()" onmouseleave="leaveit3()" href="/net">
+                        <span><svg style="width: 50px; height:40px;margin-top:-2px; color:blue"
+                                xmlns="http://www.w3.org/2000/svg" class=" h-10 w-10" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.077 13.308-5.077 18.384 0a1 1 0 01-1.414 1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.242 0 1 1 0 01-1.415-1.415 5 5 0 017.072 0 1 1 0 01-1.415 1.415zM9 16a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>&nbsp;&nbsp;&nbsp;Net Bills&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <svg
+                                style="width: 30px; height:30px" xmlns="http://www.w3.org/2000/svg"
+                                class="moveto h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                                <path fill-rule="evenodd"
+                                    d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg> </span>
+                    </a><br>
+                    <a class="otherBills" onmouseover="onit4()" onmouseleave="leaveit4()"
+                        href="/other">
+                        <span><svg style="width: 50px; height:40px;margin-top:-2px; color:lightblue"
+                                xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>&nbsp;&nbsp;&nbsp;Other Bills&nbsp;&nbsp; <svg style="width: 30px; height:30px"
+                                xmlns="http://www.w3.org/2000/svg" class="moveto h-10 w-10" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                                <path fill-rule="evenodd"
+                                    d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg> </span>
+                    </a><br>
+
+
+                    <form action="addPadget" method="post">
+                    <a class="padget" onmouseover="" onmouseleave="" >
+                    <span>
+                        set Padget&nbsp;&nbsp;<input type="text" name="padgetval" id="" class="padgeText">
+                    </span>
+                    </a>
+                </form>
+                </div>
+                <div class="onlyImg"> <img src="/—Pngtree—electronic payment bill stereo illustration_5049173.png"
+                        alt="" width="100%" height="100%"> </div>
+            </div>
+
+
+        </div>
+        <%- include('parts/bottom.ejs') %>
+            <script>
+
+
+
+                var onit = () => {
+                    document.getElementsByClassName("moveto")[0].classList.add("moverow")
+                }
+                var onit1 = () => {
+                    document.getElementsByClassName("moveto")[1].classList.add("moverow1")
+                }
+                var onit2 = () => {
+                    document.getElementsByClassName("moveto")[2].classList.add("moverow2")
+                }
+                var onit3 = () => {
+                    document.getElementsByClassName("moveto")[3].classList.add("moverow3")
+                }
+                var onit4 = () => {
+                    document.getElementsByClassName("moveto")[4].classList.add("moverow4")
+                }
+                var leaveit = () => {
+                    document.getElementsByClassName("moveto")[0].classList.remove("moverow")
+                }
+                var leaveit1 = () => {
+                    document.getElementsByClassName("moveto")[1].classList.remove("moverow1")
+                }
+                var leaveit2 = () => {
+                    document.getElementsByClassName("moveto")[2].classList.remove("moverow2")
+                }
+                var leaveit3 = () => {
+                    document.getElementsByClassName("moveto")[3].classList.remove("moverow3")
+                }
+                var leaveit4 = () => {
+                    document.getElementsByClassName("moveto")[4].classList.remove("moverow4")
+                }
+
+            </script>
+
+    </body>
+
+    </html>

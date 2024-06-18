@@ -1,0 +1,313 @@
+<%- include('parts/top.ejs') %>
+<br>
+<br>
+<br>
+<br>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+ background-size: contain;
+
+    }
+    *{
+        transition:all .2s ease-in-out;
+    }
+   
+   .cubes{
+    display: flex;
+    width: 100%;
+    position: relative;
+   }
+
+.cube {
+    position: relative;
+    margin: 100px auto 0;
+    height: 300px;
+    width: 300px;
+    -webkit-transition: -webkit-transform .5s linear;
+    -webkit-transform-style: preserve-3d;
+
+    -moz-transition: -moz-transform .5s linear;
+    -moz-transform-style: preserve-3d;
+}
+
+.face {
+    position: absolute;
+    text-align: center;
+    height: 200px;
+    width: 300px;
+    padding: 5px;
+    font-size: 15px;
+    line-height: 1em;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding-top: 7px;
+}
+
+.cube .front {
+   -webkit-transform: translateZ(150px);
+    -moz-transform: translateZ(150px);
+    background-color:#343a40;
+}
+
+.cube .side {
+    -webkit-transform: rotateY(-90deg) translateZ(150px);
+    -moz-transform: rotateY(-90deg) translateZ(150px);
+    background-color: #555;
+     line-height: 30px;
+    padding: 5px;
+}
+ .cube .side .connection{
+    margin-top: 20px;
+    width: 80%;
+    
+} 
+
+.cube:hover{
+    -webkit-transform:rotateY(90deg);     
+}
+.lastP{
+    line-height: 20px;
+}
+
+@media(max-width:716px){
+    .cubes{
+        display: block;
+    }
+}
+          .contact_header{
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 25px;
+        font-weight: bold;
+        height: auto;
+        position: absolute;
+      }
+      
+      .about_website{
+        max-width: 500px;
+        color: whitesmoke;
+        font-size: 20px;
+        font-weight: 400;
+        font-family: Arial, Helvetica, sans-serif;
+        position:relative;
+        left: 50%;
+        padding: 1px;
+        margin-left: -250px;
+        margin-top: -50px;
+    }
+    .about_website:first-letter{
+        font-size: 30px;
+
+    }
+    .about_website strong{
+        font-size: 30px;
+        color: red;
+    }
+    .user_name{
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        margin-right: 30px;
+        font-weight: 600;
+    }
+    .img_bill{
+        color:dodgerblue;
+    }
+    .fayadimg{
+        width: 100%;
+        height: 100%;
+    }
+    .cube1{
+        animation: 1s ease-out 0s 1 load;
+    }
+    .cube2{
+        animation: 1s ease-out 0s 1 load2;
+    }
+    @keyframes load {
+        0%{
+            transform: translateY(-100%);
+            transform: rotateX(360deg);
+        }
+        100%{
+            
+        }
+    }
+
+    @keyframes load2 {
+        0%{
+            transform: translateY(100%);
+            transform: rotateX(360deg);
+        }
+        100%{
+            
+        }
+    }
+    </style>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<title>YourBills</title>
+    </head>
+    <body>
+    
+        
+
+        <div class="cubes">
+            <div class="cube cube1">
+                <div class="img1" style="width: 100%;height: 300px; background-color: aqua;">
+                    <img src="/IMG_٢٠٢٣٠٦٢٤_٠٩٣٧٣٦.jpg" alt="" class="fayadimg">
+                </div>
+                <div class="face front">
+                   <p><svg style="width: 20px; height:20px; margin-top:-5px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+        </svg> Fayad Kaffoura</p>
+                   <p><svg style="width:20px; height:30px; margin-top:-2px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
+        </svg>&nbsp<strong>Web </strong>Developer</p>
+                   <p class="lastP"><svg style="width: 20px; height:20px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+        </svg> A student in the Faculty of Informatics Engineering, specializing in software engineering and information systems</p>
+         <svg style="width: 20px; height:20px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
+        </svg>
+                </div>
+                <div class="face side">
+                    <div class="connection con1"><svg style="width: 20px; height:20px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+        </svg> phone:  +963982148229</div>
+                    <div class="connection con2"><svg style="width: 20px; height:20px; margin-top:-5px;" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+        </svg>Email:feadkaffoura@gmail.com</div>
+                    <div class="connection con3">
+                      <svg style="width: 20px; height:20px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+        </svg>Links:
+                    <!--links -->
+        
+                    </div>
+                    <div class="urls">
+                        <svg onclick="facebookforfayad();" style="width:20px;background-color: blue;color: white;" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+                            
+                        </svg>
+                        
+                        </div>
+                </div>
+            </div>
+        
+            <img src="/—Pngtree—developers are coding programs on_14867886.png" style=" width: 400px;
+            height: 400px; margin-top: 150px;"  alt=""/>
+
+        <br>
+            <div class="cube cube2">
+                <div class="img1" style="width: 100%;height: 300px; background-color: aqua;">
+                </div>
+
+                <div class="face front">
+                <p><svg style="width: 20px; height:20px; margin-top:-5px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+        </svg> Firas Salha</p>
+                   <p><svg style="width:20px; height:30px; margin-top:-2px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
+        </svg>&nbsp<strong>Android </strong>Developer</p>
+                   <p class="lastP"><svg style="width: 20px; height:20px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+        </svg> A student in the Faculty of Informatics Engineering, specializing in software engineering and information systems</p>
+         <svg style="width: 20px; height:20px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
+        </svg>
+                </div>
+                <div class="face side">
+                    <div class="connection con1"><svg style="width: 20px; height:20px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+        </svg> phone:  +963991892455</div>
+                    <div class="connection con2"><svg style="width: 20px; height:20px; margin-top:-5px;" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+        </svg> Email:  firassalha@gmail.com</div>
+                    <div class="connection con3">
+                        <div><svg style="width: 20px; height:20px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+        </svg>Links:</div>
+        
+        <!--type links-->
+        <div class="urls">
+        <svg onclick="facebookforfiras();" style="width:20px;background-color: blue;color: white;" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+            
+        </svg>
+        
+        </div>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+    
+    <script>
+        var innerDrop = document.getElementsByClassName("innerdrop")[0],
+       innerInfodrop = document.getElementsByClassName("innerInfodrop")[0] ;
+       var i=1,j=1;
+       
+      function showSettings(){
+        if(i%2!=0){
+        innerDrop.style.display="block";
+        } 
+        else {
+
+            innerDrop.style.display="none";
+        }
+        i++;
+       }
+
+       function showInfo(){
+        if(j%2!=0){
+            innerInfodrop.style.display="block";
+        } 
+        else {
+            innerInfodrop.style.display="none";
+        }
+        j++;
+       }
+
+       function changeInfo(){
+        document.getElementById("changeInfoDiv1").style.display="block";
+        document.getElementsByClassName("allBills")[0].style.opacity="0.3";
+         document.getElementsByClassName("navbar")[0].style.opacity="0.3";
+       }
+      
+       function facebookforfiras(){
+        window.open("https://www.facebook.com/profile.php?id=100007333546054&mibextid=ZbWKwL");
+       }
+
+      
+      
+       function facebookforfayad(){
+        window.open("https://www.facebook.com/profile.php?id=100057071331736&mibextid=ZbWKwL");
+       }
+
+      
+       
+    </script>
+    
+    </body>
+    
+</html>
+
