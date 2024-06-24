@@ -35,6 +35,8 @@ const waterRoute = require('./routes/water.route')
 const phoneRoute = require('./routes/phone.route')
 const netRoute = require('./routes/net.route')
 const OtherRoute = require('./routes/other.route')
+const addpadgetRoute = require('./routes/addpaget.route')
+const apiRoute = require('./routes/apiRoute.route')
 app.post('/logout', (req, res, next) => {
     req.session.destroy(() => {
         res.redirect('/login')
@@ -55,7 +57,8 @@ app.use('/addelectbill', electRoute)
 app.use('/addwaterbill', waterRoute)
 app.use('/addphonebill', phoneRoute)
 app.use("/addnetbill", netRoute )
-
+app.use("/addPadget", addpadgetRoute)
+app.use("/api", apiRoute)
 app.listen(7000, () => {
     console.log('server is running')
 })

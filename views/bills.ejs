@@ -336,8 +336,26 @@
     outline: none;
     border-bottom: 1px solid red;
 }
-
-            
+.padget{
+    display: flex;
+}
+         .subaddpadg{
+            height: 40px;
+            position: absolute;
+            right: 30px;
+            bottom:30px;
+           
+         }
+         .padgdate{
+            height: 40px;
+            position: absolute;
+            right: 100px;
+            bottom:30px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            outline: none;
+         }   
         </style>
 
         <meta charset="UTF-8">
@@ -451,12 +469,15 @@
                     </a><br>
 
 
-                    <form action="addPadget" method="post">
+                    <form action="/addPadget" method="post" style="display: flex;">
                     <a class="padget" onmouseover="" onmouseleave="" >
                     <span>
-                        set Padget&nbsp;&nbsp;<input type="text" name="padgetval" id="" class="padgeText">
+                        set Padget&nbsp;&nbsp;<input type="text" name="padgetval" id="" class="padgeText" value="<%= respadg %>">
                     </span>
+                    
                     </a>
+                    <input type="date" name="padgDate" id="" title="final Date" alt="final Date" class="padgdate" >
+                    <button type="submit" class="subaddpadg btn btn-success" style="font-size: 20px; text-align: center;">add</button>
                 </form>
                 </div>
                 <div class="onlyImg"> <img src="/—Pngtree—electronic payment bill stereo illustration_5049173.png"

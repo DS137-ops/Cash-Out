@@ -4,7 +4,8 @@ const path = require('path')
 
 exports.getbillspage = (req, res, next) => {
     authmodel.gethomedata(req.session.userid).then((userdata) => {
-        res.render('bills', { userdata: userdata, verifuser: req.session.userid })
+            res.render('bills', { userdata: userdata, verifuser: req.session.userid})
+
     })
 
 }

@@ -20,7 +20,15 @@ var newSchema = mongoose.Schema({
         required:[true , 'please Enter Your Password'],
         minlength : [6,'Password must be more than 6 chars']
     },
-    city: String
+    city: String,
+    padget: {
+        type: Number,
+        min: 0,
+      },
+      FinalDatePadget: {
+        type: Date,
+        default: () => Date.now() + 1000 * 60 * 60 * 24 * 30
+      }
 })
 var users = mongoose.model('users', newSchema)
 exports.postdatamodel = (name, email, password, city) => {
@@ -39,7 +47,8 @@ exports.postdatamodel = (name, email, password, city) => {
                 name: name,
                 email: email,
                 password: hpass,
-                city: city
+                city: city,
+                padget:null
             })
             return user.save()
             
@@ -88,3 +97,19 @@ exports.gethomedata = (id) => {
         })
     })
 }
+
+exports.adduserPadget = (padget2,padgDate,id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+             users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{   padget:padget2     ,FinalDatePadget:padgDate}}  )
+            .then((userpadg)=>{
+                mongoose.disconnect()
+                resolve(padget2)
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
+        })
+    })
+}
+
