@@ -3,13 +3,22 @@ const billModel = require('../model/bill.model')
 exports.getelectpage = (req, res, next) => {
     authmodel.gethomedata(req.session.userid).then((userdata) => {
         billModel.getelectsdata(req.session.userid).then((electdata)=>{
-            res.render('elect', { userdata: userdata, verifuser: req.session.userid , electdata:electdata })
+            authmodel.getuserPadget(req.session.userid).then((userOfPadget)=>{
+                res.render('elect', {userOfPadget:userOfPadget, userdata: userdata, verifuser: req.session.userid , electdata:electdata })
+
+            })
         })
     })
 }
 exports.addnewelectbill = (req,res,next)=>{
     billModel.addelectnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
-        res.redirect('/elect')
+       
+        authmodel.updatePadget(req.session.userid,req.body.value).then(()=>{
+           
+                res.redirect('/elect')
+           
+        })
+        
     })
 }
 

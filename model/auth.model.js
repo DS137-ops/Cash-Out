@@ -23,6 +23,7 @@ var newSchema = mongoose.Schema({
     city: String,
     padget: {
         type: Number,
+        default:null,
         min: 0,
       },
       FinalDatePadget: {
@@ -84,6 +85,33 @@ exports.userloginmodel = (email, password) => {
                 reject("Invalid Email")}
         }).catch((err) => {
             reject(err)})})}
+
+            exports.userloginmodelforapi = (email, password) => {
+                return new Promise((resolve, reject) => {
+                    mongoose.connect(globalconnect).then(() => {
+                        return users.findOne({ email: email })
+                    }).then((user) => {
+                        if (user) {
+                            bcrypt.compare(password, user.password).then((verif) => {
+                                if (verif) {
+                                    mongoose.disconnect()
+                                    resolve(user)
+                                }
+                                else {
+                                    mongoose.disconnect()
+                                    reject("Invalid Password")
+                                }
+                            })
+                        }
+                        else {
+                            mongoose.disconnect()
+                            reject("Invalid Email")}
+                    }).catch((err) => {
+                        reject(err)})})}
+
+
+
+
 exports.gethomedata = (id) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(() => {
@@ -113,3 +141,34 @@ exports.adduserPadget = (padget2,padgDate,id)=>{
     })
 }
 
+exports.getuserPadget = (id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            return users.findById(id)
+            .then((userpadg)=>{
+                mongoose.disconnect()
+                resolve(userpadg.padget)
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
+        })
+    })
+}
+
+exports.updatePadget = (id,val)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            return users.findById(id)
+        }).then((userpadget)=>{
+            var userpadget_1 = userpadget.padget
+           return users.updateOne({_id:new mongoose.Types.ObjectId(id)} , {$set:{padget:userpadget_1 - val }})
+        }).then((userit)=>{
+            mongoose.disconnect()
+                resolve("Ok")
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
