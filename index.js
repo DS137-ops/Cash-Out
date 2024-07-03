@@ -59,6 +59,7 @@ app.use('/addphonebill', phoneRoute)
 app.use("/addnetbill", netRoute )
 app.use("/addPadget", addpadgetRoute)
 app.use("/api", apiRoute)
+app.use("/showit" , apiRoute)
 app.listen(7000, () => {
     console.log('server is running')
 })

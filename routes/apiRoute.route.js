@@ -8,7 +8,6 @@ const body = require('express').urlencoded({ extended: true })
 router.post('/login',body, (req,res)=>{
     authmodel.userloginmodel(req.body.email, req.body.password).then((id) => {
         req.session.userid = id
-        let y = req.body.email
         authmodel.userloginmodelforapi(req.body.email, req.body.password).then((userr)=>{
           res.json({error:false,data:{userr}})
         })
@@ -17,6 +16,8 @@ router.post('/login',body, (req,res)=>{
     res.json({error:true,data:{}})
   })
 })
-
+router.get('/' , (req,res)=>{
+  console.log(this)
+})
 
 module.exports = router;
