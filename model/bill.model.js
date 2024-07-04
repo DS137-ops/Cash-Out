@@ -14,7 +14,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     
     exports.addelectnewbill = (name,value,date,photo,userid) =>{
         return new Promise((resolve, reject) => {
-            mongoose.connect(globalconnect).then(()=>{
+            mongoose.connect(uri).then(()=>{
                     let newbook = new billss({
                     
                         name:name,
@@ -39,7 +39,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
 
     exports.getelectsdata = (id)=>{
         return new Promise((resolve, reject) => {
-            mongoose.connect(globalconnect).then(()=>{
+            mongoose.connect(uri).then(()=>{
                 return billss.find({userid:id,billtype:"elect"})
             }).then((bills)=>{
                 mongoose.disconnect()
@@ -52,7 +52,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
 
     exports.addwaternewbill = (name,value,date,photo,userid)=>{
         return new Promise((resolve, reject) => {
-            mongoose.connect(globalconnect).then(()=>{
+            mongoose.connect(uri).then(()=>{
                 
             }).then(()=>{
                 let newbook = new billss({
@@ -77,7 +77,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
 
     exports.getwatersdata = (id)=>{
         return new Promise((resolve, reject) => {
-            mongoose.connect(globalconnect).then(()=>{
+            mongoose.connect(uri).then(()=>{
                 return billss.find({userid:id,billtype:"water"})
             }).then((bills)=>{
                 mongoose.disconnect()
@@ -91,7 +91,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
 
 exports.addphonenewbill = (name,value,date,photo,userid) =>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
+        mongoose.connect(uri).then(()=>{
             let newbook = new billss({
                     
                 name:name,
@@ -114,7 +114,7 @@ exports.addphonenewbill = (name,value,date,photo,userid) =>{
 
 exports.getphonesdata = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
+        mongoose.connect(uri).then(()=>{
             return billss.find({userid:id,billtype:"phone"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -129,7 +129,7 @@ exports.getphonesdata = (id)=>{
 
 exports.addnetnewbill = (name,value,date,photo,userid) =>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
+        mongoose.connect(uri).then(()=>{
             let newbook = new billss({
                     
                 name:name,
@@ -153,7 +153,7 @@ exports.addnetnewbill = (name,value,date,photo,userid) =>{
 
 exports.getnetsdata = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
+        mongoose.connect(uri).then(()=>{
             return billss.find({userid:id,billtype:"net"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -167,7 +167,7 @@ exports.getnetsdata = (id)=>{
 
 exports.getsum = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
+        mongoose.connect(uri).then(()=>{
            return billss.find({userid:id , billtype:"net"})
         }).then((user)=>{
             return billss.aggregate([{$match:{pid:{$eq:user.userid}}}, {$group:{_id:'663248a810678f31c83f7970',sum:{$sum:'$value'}}}])

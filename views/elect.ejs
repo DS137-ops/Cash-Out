@@ -376,8 +376,9 @@ font-size: 22px;
               <td><%- billelect.value %>$</td>
               <td><%- billelect.date %></td>
               <th><img width="50" height="50" src="/uploads/<%= billelect.photo %>"></th>
-              <th><form action="/showit" method="get"><button class="btn btn-danger" >Delete</button> </form>
-              <button class="btn btn-success">Update</button></th>
+              <th><form action="" method="get"><button class="btn btn-danger" >Delete</button> </form>
+             <button class="btn btn-success update" onclick="showUpdate()">Update</button>
+            </th>
             </tr>
        <% } %>
           </tbody>
@@ -386,7 +387,8 @@ font-size: 22px;
       </div>
     </div>
     <script>
-      var addBill = document.getElementsByClassName("addBill")[0];
+      var addBill = document.getElementsByClassName("addBill")[0]
+     
       addBill.addEventListener("click", () => {
         document.getElementsByClassName("tog")[0].classList.add("showw")
         document.getElementsByClassName("tog")[0].classList.remove("hidd")
@@ -400,9 +402,14 @@ font-size: 22px;
           document.getElementsByClassName("tog")[0].classList.add("hidd")
         });
       });
-  function alertit(){
-    console.log(11)
-  }
+
+      var  updateBill = document.getElementsByClassName("update")[0];
+
+     function showUpdate(){
+        document.getElementsByClassName("tog")[0].classList.add("showw")
+        document.getElementsByClassName("tog")[0].classList.remove("hidd")
+     }
+     
     </script>
   </body>
 

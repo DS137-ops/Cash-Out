@@ -1,7 +1,9 @@
 const billscontroller = require('../controller/api.controller')
 const authcontroller = require('../controller/auth.controller')
+const registercontroller = require('../controller/auth.controller')
 
 const authmodel = require('../model/auth.model')
+const billmodel = require('../model/bill.model')
 const router = require('express').Router()
 const body = require('express').urlencoded({ extended: true })
 
@@ -16,8 +18,18 @@ router.post('/login',body, (req,res)=>{
     res.json({error:true,data:{}})
   })
 })
-router.get('/' , (req,res)=>{
-  console.log(this)
+
+
+router.post('/register', body, (req,res)=>{
+  authmodel.postdatamodelforapi(req.body.name, req.body.email, req.body.password, req.body.city).then((userapi)=>{
+    res.json({error:false,data:{userapi},message:"success"})
+
+  }).catch((err)=>{
+    res.json({error:true,data:{}})
+  })
+  
 })
+
+
 
 module.exports = router;

@@ -34,7 +34,7 @@ var newSchema = mongoose.Schema({
 var users = mongoose.model('users', newSchema)
 exports.postdatamodel = (name, email, password, city) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(() => {
+        mongoose.connect(uri).then(() => {
             return users.findOne({ email: email })
         }).then((user) => {
             if (user) {
@@ -55,7 +55,38 @@ exports.postdatamodel = (name, email, password, city) => {
             
         }).then((user) => {
             mongoose.disconnect()
-            resolve('registered!')
+            resolve(user)
+        }).then((err) => {
+            mongoose.disconnect()
+            reject(err)
+        }).catch(err => { console.log(err) })
+    })
+}
+
+exports.postdatamodelforapi = (name, email, password, city) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(uri).then(() => {
+            return users.findOne({ email: email })
+        }).then((user) => {
+            if (user) {
+                mongoose.disconnect()
+                reject('Email is used!')
+            } else {
+                return bcrypt.hash(password, 10)
+            }
+        }).then((hpass) => {
+            let user = new users({
+                name: name,
+                email: email,
+                password: hpass,
+                city: city,
+                padget:null
+            })
+            return user.save()
+            
+        }).then((user) => {
+            mongoose.disconnect()
+            resolve(user)
         }).then((err) => {
             mongoose.disconnect()
             reject(err)
@@ -65,7 +96,7 @@ exports.postdatamodel = (name, email, password, city) => {
 
 exports.userloginmodel = (email, password) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(() => {
+        mongoose.connect(uri).then(() => {
             return users.findOne({ email: email })
         }).then((user) => {
             if (user) {
@@ -88,7 +119,7 @@ exports.userloginmodel = (email, password) => {
 
             exports.userloginmodelforapi = (email, password) => {
                 return new Promise((resolve, reject) => {
-                    mongoose.connect(globalconnect).then(() => {
+                    mongoose.connect(uri).then(() => {
                         return users.findOne({ email: email })
                     }).then((user) => {
                         if (user) {
@@ -114,7 +145,7 @@ exports.userloginmodel = (email, password) => {
 
 exports.gethomedata = (id) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(() => {
+        mongoose.connect(uri).then(() => {
             return users.findById(id)
         }).then((userdata) => {
             mongoose.disconnect()
@@ -128,7 +159,7 @@ exports.gethomedata = (id) => {
 
 exports.adduserPadget = (padget2,padgDate,id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
+        mongoose.connect(uri).then(()=>{
              users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{   padget:padget2     ,FinalDatePadget:padgDate}}  )
             .then((userpadg)=>{
                 mongoose.disconnect()
@@ -143,7 +174,7 @@ exports.adduserPadget = (padget2,padgDate,id)=>{
 
 exports.getuserPadget = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
+        mongoose.connect(uri).then(()=>{
             return users.findById(id)
             .then((userpadg)=>{
                 mongoose.disconnect()
@@ -158,7 +189,7 @@ exports.getuserPadget = (id)=>{
 
 exports.updatePadget = (id,val)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
+        mongoose.connect(uri).then(()=>{
             return users.findById(id)
         }).then((userpadget)=>{
             var userpadget_1 = userpadget.padget

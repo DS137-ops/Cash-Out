@@ -69,6 +69,41 @@
     .parentOfBills img{
       margin-top: 5px;
     }
+
+
+
+
+
+
+    .dropdown {
+            position: relative; /* Position the dropdown menu relative to its container */
+            display: inline-block; /* Allow inline display for flexibility */
+        }
+
+        .dropdown-content {
+            display: none; /* Hide the dropdown content initially */
+            position: absolute; /* Position the content absolutely within the dropdown */
+            background-color: #f1f1f1; /* Set a light background color */
+            min-width:200px;
+            max-width: 800px; /* Set a minimum width for the content */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add a subtle shadow */
+            z-index: 1; /* Ensure the content is displayed above other elements */
+            word-wrap: break-word;
+            text-wrap: nowrap;
+        }
+
+        .dropdown-content a {
+            color: black; /* Set text color for links */
+            padding: 12px 16px; /* Add padding for readability */
+            text-decoration: none; /* Remove default underline */
+            display: block; /* Allow full-width links */
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;} /* Change background color on hover */
+
+        .dropdown:hover .dropdown-content { /* Show the content on hover */
+            display: block;
+        }
   </style>
 </head>
 
@@ -107,13 +142,23 @@
           </li>
           <% } %>
             <% if(verifuser){ %>
-              <li class="nav-item" onclick="showProfile()" style="cursor: pointer;">
+              <li class="nav-item dropdown" onclick="showProfile()" style="cursor: pointer;">
                 <span class="username">
                   <img src="/icons8-person-94.png" width="40px" height="40px" style="margin-bottom: 10px;" />
                   <span>PROFILE</span>
                   <img src="/downn.png" alt="" width="30px" height="30px" style="margin-left: -10px; margin-top: -5px;">
                 </span>
-                <div
+                <div class="dropdown-content">
+                  <a href="#" style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; border-bottom: 1px solid grey;">&nbsp;<img src="/icons8-person-94.png" width="20px" height="20px" />&nbsp;<%-userdata.name %></a>
+                  <a href="#" style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; border-bottom: 1px solid grey;"><img src="/icons8-location-40.png" width="20px" height="20px" alt="">&nbsp;&nbsp;&nbsp;<%-
+                    userdata.city %></a>
+                  <a href=""><img src="/arrow-down-sign-to-navigate.png" alt="" width="20px" height="20px"
+                    style="margin-top: -2px;">&nbsp;&nbsp;&nbsp; Edit profile
+                  
+                  </a>
+              </div>
+
+                <!-- <div
                   style="width: 200px;background-color: #fff; color: black; position:absolute; transition: .5s all ease-out ;padding: 10px; line-height: 45px;"
                   class="keyframe liProfile hiddenli">
                   <div> <img src="/icons8-person-94.png" width="20px" height="20px" />&nbsp;&nbsp;&nbsp;<%-
@@ -128,28 +173,47 @@
                       style="margin-top: -2px;">&nbsp;&nbsp;&nbsp; Edit profile
                   </div>
 
-                </div>
+                </div> -->
               </li>
               <% } %>
       </ul>
     </div>
   </nav>
+
+  
+
+
   <script>
-    var i = 0;
-    var liProfile = document.getElementsByClassName("liProfile")[0];
+const dropdownBtn = document.querySelector('.dropdown .username');
+const dropdownContent = document.querySelector('.dropdown-content');
+const body = document.body;
+dropdownBtn.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show'); // Toggle visibility using class
+        });
+        body.addEventListener('click', function(event) {
+            if (!dropdownBtn.contains(event.target)) { // Check if clicked element is not within the dropdown
+                dropdownContent.classList.remove('show');
+            }
+        });
+
+let ShowupdateProfile = ()=>{
+  
+}
+    // var i = 0;
+    // var liProfile = document.getElementsByClassName("liProfile")[0];
 
    
 
-    var showProfile = () => {
-      if (i % 2 == 0) {
+    // var showProfile = () => {
+    //   if (i % 2 == 0) {
 
-        liProfile.style.display = "block";
-      }
-      else {
-        liProfile.style.display = "none";
-      }
-      i++;
-    }
+    //     liProfile.style.display = "block";
+    //   }
+    //   else {
+    //     liProfile.style.display = "none";
+    //   }
+    //   i++;
+    // }
     
   </script>
 </body>
