@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            body{
+                background-color: aqua;
+            }
+  .changeInfoDiv{
+        width: 80%;
+        height: 320px;
+        background-color: #555;
+       left: 50%;
+       margin-left: -40%;
+       margin-top: 200px;
+        overflow-y: scroll;
+        transition: .5s all ease-in-out;
+        position: absolute;
+        z-index: 3;
+
+      /*  transform: translateY(300px);
+        display: none;*/
+    }
+    .changeInfoDiv header{
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        border-bottom: 1px solid white;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+   .innerchangeInfoDiv{
+        width: 100%;
+        height: 200px;
+        position: relative;
+       
+    }
+    
+    
+     .innerchangeInfoDiv div{
+        width: 100%;
+        position: relative;
+       text-align: center;
+        color: wheat;
+         margin-top: 20px;
+
+    }
+     .innerchangeInfoDiv div label{
+        font-size: 15px;
+        font-weight: 500;
+        text-align: left;
+        width: 30%;
+ 
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     }
+      .innerchangeInfoDiv div input{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid red;
+        transition: .4s all ease;
+        font-size: 20px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 50%;
+       
+      }
+      .innerchangeInfoDiv div input:focus{
+        border-top: 2px solid red;
+      }
+      .submitChanges{
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+        box-shadow: 1px 2px #2d292a4a;
+      }
+      .exit{
+        position: absolute;
+    font-size: 20px;
+    width: min-content;
+    color: white;
+    cursor: pointer;
+    right: 10px;
+    margin: auto;
+    z-index: 2;
+      }
+
+     </style>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<title></title>
+    </head>
+    <body>
+    <div class="changeInfoDiv" id="changeInfoDiv1">
+       
+            <header>change Your Information</header>
+            <form action="/updateProfileInfo" method="post">
+            
+            <div class="innerchangeInfoDiv">
+                <div class="change1">
+                    <label><svg style="width: 20px; height:20px; margin-top:-1px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
+</svg>new UserName</label>&nbsp; <input type="text" name="name" value='<%- userdata.name %>'>
+                </div>
+               
+           <div class="change3">
+                    <div class="change1">
+                    <label><svg style="width: 20px; height:20px; margin-top:-1px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+    <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"></path>
+</svg>new Password</label>&nbsp; <input type="password" name="password" value='<%- userdata.password %>'>
+                </div>
+                </div>
+                <div class="change3">
+                    <div class="change1">
+                    <label><svg style="width: 20px; height:20px; margin-top:-1px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+</svg>Country</label>&nbsp; <input type="text" name="country" value='<%- userdata.city %>'>
+                </div>
+                </div>
+                <div class="change4">
+                    <div class="change1">
+                    <label><svg style="width: 20px; height:20px; margin-top:-1px" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+</svg>new Email</label>&nbsp; <input type="text" name="email" value='<%- userdata.email %>'>
+                </div>
+                </div>
+                <div><input type="submit" class="btn btn-primary"> </div>
+                
+            </div>
+            </form>
+        </div>
+
+        <script>
+         
+       </script>
+    </body>
+</html>

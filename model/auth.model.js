@@ -149,7 +149,6 @@ exports.gethomedata = (id) => {
             return users.findById(id)
         }).then((userdata) => {
             mongoose.disconnect()
-            userdata.name = userdata.name.toString().toLocaleUpperCase()
             resolve(userdata)
         }).catch((err) => {
             reject(err)
@@ -200,6 +199,20 @@ exports.updatePadget = (id,val)=>{
         }).catch((err)=>{
             mongoose.disconnect()
             reject(err)
+        })
+    })
+}
+
+exports.postupdateprofile = ( name , password , city , email , id )=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(uri).then(()=>{
+           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:password , city:city , email:email}}  )
+        }).then(()=>{
+            resolve("updated")
+        })
+        .catch((err)=>{
+            mongoose.disconnect()
+            reject("not updated")
         })
     })
 }

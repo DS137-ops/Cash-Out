@@ -37,6 +37,8 @@ const netRoute = require('./routes/net.route')
 const OtherRoute = require('./routes/other.route')
 const addpadgetRoute = require('./routes/addpaget.route')
 const apiRoute = require('./routes/apiRoute.route')
+const updateprofileRoute = require('./routes/updateprofile.route')
+
 app.post('/logout', (req, res, next) => {
     req.session.destroy(() => {
         res.redirect('/login')
@@ -59,7 +61,8 @@ app.use('/addphonebill', phoneRoute)
 app.use("/addnetbill", netRoute )
 app.use("/addPadget", addpadgetRoute)
 app.use("/api", apiRoute)
-
+app.use("/updateprofile" ,updateprofileRoute)
+app.use("/updateProfileInfo" , updateprofileRoute)
 app.listen(7000, () => {
     console.log('server is running')
 })

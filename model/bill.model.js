@@ -26,10 +26,10 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                     })
                     return newbook.save()
                 
-            }).then(()=>{
+            }).then((newbilll)=>{
                 
                 mongoose.disconnect()
-                resolve('added')
+                resolve(newbilll)
             }).catch((err)=>{
                 mongoose.disconnect()
                 reject(err)
@@ -43,7 +43,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                 return billss.find({userid:id,billtype:"elect"})
             }).then((bills)=>{
                 mongoose.disconnect()
-                resolve(bills)
+                resolve(bills[0])
             }).catch((err)=>{
                 reject(err)
             })
@@ -168,13 +168,42 @@ exports.getnetsdata = (id)=>{
 exports.getsum = (id)=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(uri).then(()=>{
-           return billss.find({userid:id , billtype:"net"})
+           return billss.find({_id:id , billtype:"net"})
         }).then((user)=>{
             return billss.aggregate([{$match:{pid:{$eq:user.userid}}}, {$group:{_id:'663248a810678f31c83f7970',sum:{$sum:'$value'}}}])
         }).then((calcu)=>{
             mongoose.disconnect()
             console.log(calcu)
             resolve(calcu)
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+
+exports.getelectsdataforApi = (id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(uri).then(()=>{
+            return billss.find({userid:id, billtype:"elect"})
+        }).then((lastbills)=>{
+            mongoose.disconnect()
+            resolve(lastbills)
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+exports.getewatersdataForApi = (id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(uri).then(()=>{
+            return billss.find({_id:id, billtype:"water"})
+        }).then((lastbills)=>{
+            mongoose.disconnect()
+            resolve(lastbills)
         }).catch((err)=>{
             mongoose.disconnect()
             reject(err)
