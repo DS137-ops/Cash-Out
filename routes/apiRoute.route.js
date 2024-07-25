@@ -24,7 +24,7 @@ router.post('/login',body, (req,res)=>{
 
 router.post('/register', body, (req,res)=>{
   authmodel.postdatamodelforapi(req.body.name, req.body.email, req.body.password, req.body.city).then((userapi)=>{
-    res.json({error:false,data:{userapi},message:"success"})
+    res.json({error:false,message:"success"})
 
   }).catch((err)=>{
     res.json({error:true,data:{}})
