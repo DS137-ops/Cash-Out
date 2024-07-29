@@ -3,7 +3,7 @@ const handleErrors = (err)=>{
       console.log(err.message)
 }
 exports.ShowLoginPage = (req, res, next) => {
-      res.render('login', { verifuser: req.session.userid })
+      res.render('login', { verifuser: req.session.userid,message: req.flash('error')[0] })
 }
 
 exports.postuserdata = (req, res, next) => {
@@ -20,6 +20,7 @@ exports.userlogin = (req, res, next) => {
             res.redirect('/')
 
       }).catch((err) => {
+            req.flash('error', err)
             res.redirect('/login')
       })
 }

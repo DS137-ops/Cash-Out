@@ -47,7 +47,9 @@ exports.addnewwaterbill = (req,res,next)=>{
 exports.getphonepage = (req,res,next)=>{
     authmodel.gethomedata(req.session.userid).then((userdata)=>{
         billModel.getphonesdata(req.session.userid).then((phonedata)=>{
-            res.render('phone',{userdata:userdata,verifuser:req.session.userid , phonedata:phonedata})
+            authmodel.getuserPadget(req.session.userid).then((phonePadget)=>{
+                res.render('phone',{phonePadget:phonePadget,userdata:userdata,verifuser:req.session.userid , phonedata:phonedata})
+            })
         })
     })
    
@@ -55,7 +57,9 @@ exports.getphonepage = (req,res,next)=>{
 
 exports.addnewphonebill = (req,res,next)=>{
     billModel.addphonenewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
-        res.redirect('/phone')
+        authmodel.updatePadget(req.session.userid,req.body.value).then(()=>{
+            res.redirect('/phone')
+        })
     })
 }
 exports.addnewnetbill = (req,res,next)=>{
@@ -67,8 +71,8 @@ exports.addnewnetbill = (req,res,next)=>{
 exports.getnetpage = (req,res,next)=>{
     authmodel.gethomedata(req.session.userid).then((userdata)=>{
         billModel.getnetsdata(req.session.userid).then((netdata)=>{
-            billModel.getsum(req.session.userid).then((sumofit)=>{
-                res.render('net',{userdata:userdata,verifuser:req.session.userid , netdata:netdata , sumofit:sumofit})
+            authmodel.getuserPadget(req.session.userid).then((netPadget)=>{
+                res.render('net',{netPadget:netPadget,userdata:userdata,verifuser:req.session.userid , netdata:netdata })
             })
         })
     })
@@ -76,8 +80,16 @@ exports.getnetpage = (req,res,next)=>{
 
 exports.getOtherPage = (req,res,next) =>{
     authmodel.gethomedata(req.session.userid).then((userdata)=>{
-        res.render('other',{userdata:userdata,verifuser:req.session.userid})
+        authmodel.getuserPadget(req.session.userid).then((otherPadget)=>{
+            res.render('other',{otherPadget:otherPadget,userdata:userdata,verifuser:req.session.userid})
+
+        })
     })
+}
+exports.getTipsPage = (req,res,next)=>{
+authmodel.gethomedata(req.session.userid).then((userdata)=>{
+    res.render('tips',{userdata:userdata,verifuser:req.session.userid})
+})
 }
 
 exports.DeleteBillController = (req,res,next)=>{

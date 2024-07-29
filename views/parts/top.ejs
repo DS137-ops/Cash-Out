@@ -76,32 +76,32 @@
 
 
     .dropdown {
-            position: relative; /* Position the dropdown menu relative to its container */
-            display: inline-block; /* Allow inline display for flexibility */
+            position: relative;
+            display: inline-block;
         }
 
         .dropdown-content {
-            display: none; /* Hide the dropdown content initially */
-            position: absolute; /* Position the content absolutely within the dropdown */
-            background-color: #f1f1f1; /* Set a light background color */
+            display: none; 
+            position: absolute;
+            background-color: #f1f1f1; 
             min-width:200px;
-            max-width: 800px; /* Set a minimum width for the content */
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add a subtle shadow */
-            z-index: 1; /* Ensure the content is displayed above other elements */
+            max-width: 800px; 
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+            z-index: 1; 
             word-wrap: break-word;
             text-wrap: nowrap;
         }
 
         .dropdown-content a {
-            color: black; /* Set text color for links */
-            padding: 12px 16px; /* Add padding for readability */
-            text-decoration: none; /* Remove default underline */
-            display: block; /* Allow full-width links */
+            color: black; 
+            padding: 12px 16px; 
+            text-decoration: none; 
+            display: block; 
         }
 
-        .dropdown-content a:hover {background-color: #ddd;} /* Change background color on hover */
+        .dropdown-content a:hover {background-color: #ddd;} 
 
-        .dropdown:hover .dropdown-content { /* Show the content on hover */
+        .dropdown:hover .dropdown-content { 
             display: block;
         }
   </style>
@@ -129,6 +129,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/about"><img src="/info-button.png" style="margin-top: -3px;"  width="25" height="25" alt=""> About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tips"><img src="/info-button.png" style="margin-top: -3px;"  width="25" height="25" alt=""> Tips</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/bills"> <img src="/invoice.png" width="25px" height="25px" style="margin-top: -3px;" alt=""> bills</a>
@@ -189,10 +192,10 @@ const dropdownBtn = document.querySelector('.dropdown .username');
 const dropdownContent = document.querySelector('.dropdown-content');
 const body = document.body;
 dropdownBtn.addEventListener('click', function() {
-            dropdownContent.classList.toggle('show'); // Toggle visibility using class
+            dropdownContent.classList.toggle('show'); 
         });
         body.addEventListener('click', function(event) {
-            if (!dropdownBtn.contains(event.target)) { // Check if clicked element is not within the dropdown
+            if (!dropdownBtn.contains(event.target)) {
                 dropdownContent.classList.remove('show');
             }
         });

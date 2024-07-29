@@ -262,6 +262,24 @@ tbody > tr:nth-of-type(n){
     font-family: Arial, Helvetica, sans-serif;
     color: #fff;
   }
+
+  .warning{
+    margin-left: auto;
+  }
+  .padgetDiv{
+    position: relative;
+    
+    top: 50%;
+    margin-top: -15px;
+  }
+  .spangreen{
+color: green;
+font-size: 22px;
+  }
+  .spanred{
+color: red;
+font-size: 22px;
+  }
     </style>
   </head>
 
@@ -324,6 +342,8 @@ tbody > tr:nth-of-type(n){
             <svg style="width: 100px; height:100px;margin-top:-2px; color:lightblue; float:left" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
             </svg>
+            <div style="display: flex;" class="padgetDiv"> <img src="/warning.png" class="warning" width="30" height="30" alt="">&nbsp;&nbsp;<% if(otherPadget >=0 ){ %> <span class="spangreen"><%- otherPadget %></span> <% }else{ %> <span class="spanred" onload="alertit()" ><%- otherPadget %></span> <% } %>    </div>
+
         </div>
       </div>
       <div class="in2">

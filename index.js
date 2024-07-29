@@ -7,7 +7,7 @@ localConnect = "mongodb://localhost:27017/bills"
 
 const MongoStrore = require("connect-mongodb-session")(session)
 var Store = new MongoStrore({
-    uri:globalconnect,
+    uri:localConnect,
     collection: "sessions"
 })
 
@@ -24,7 +24,8 @@ app.use(express.static(path.join(__dirname, 'assests')));
 app.use(express.static(path.join(__dirname, 'assets')));
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-
+const flash = require('connect-flash')
+app.use(flash())
 const loginroute = require('./routes/login.route')
 const homeroute = require('./routes/home.route')
 const registerrouter = require('./routes/register.route')
@@ -38,7 +39,7 @@ const OtherRoute = require('./routes/other.route')
 const addpadgetRoute = require('./routes/addpaget.route')
 const apiRoute = require('./routes/apiRoute.route')
 const updateprofileRoute = require('./routes/updateprofile.route')
-
+const tipsRoute = require('./routes/tips.route')
 app.post('/logout', (req, res, next) => {
     req.session.destroy(() => {
         res.redirect('/login')
@@ -63,6 +64,7 @@ app.use("/addPadget", addpadgetRoute)
 app.use("/api", apiRoute)
 app.use("/updateprofile" ,updateprofileRoute)
 app.use("/updateProfileInfo" , updateprofileRoute)
+app.use("/tips",tipsRoute)
 app.listen(7000, () => {
     console.log('server is running')
 })
