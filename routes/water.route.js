@@ -17,4 +17,6 @@ router.post('/', GuardAuth.isAuth,multer({
     })
 }).single(["photo"]), electcontroller.addnewwaterbill)
 
+router.get('/deleteWater/:id' , electcontroller.DeleteWaterBillController )
+
 module.exports = router;

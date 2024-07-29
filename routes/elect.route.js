@@ -16,4 +16,8 @@ router.post('/',multer({
         }
     })
 }).single(["photo"]), GuardAuth.isAuth,electcontroller.addnewelectbill)
+
+
+router.get('/deleteElect/:id' , electcontroller.DeleteBillController)
+
 module.exports = router;

@@ -25,7 +25,10 @@ exports.addnewelectbill = (req,res,next)=>{
 exports.getwaterpage = (req, res, next) => {
     authmodel.gethomedata(req.session.userid).then((userdata) => {
         billModel.getwatersdata(req.session.userid).then((waterdata)=>{
-            res.render('water', { userdata: userdata, verifuser: req.session.userid , waterdata:waterdata })
+            authmodel.getuserPadget(req.session.userid).then((waterPadget)=>{
+                res.render('water', { waterPadget:waterPadget , userdata: userdata, verifuser: req.session.userid , waterdata:waterdata })
+
+            })
         })
     })
 }
@@ -34,7 +37,10 @@ exports.getwaterpage = (req, res, next) => {
 
 exports.addnewwaterbill = (req,res,next)=>{
     billModel.addwaternewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
-        res.redirect('/water')
+        authmodel.updatePadget(req.session.userid,req.body.value).then(()=>{
+            res.redirect('/water')
+        })
+
     })
 }
 
@@ -74,4 +80,29 @@ exports.getOtherPage = (req,res,next) =>{
     })
 }
 
+exports.DeleteBillController = (req,res,next)=>{
+    let ElectId = req.params.id
+    billModel.deleteElectBill(ElectId).then((DeleteRes)=>{
+          res.redirect('/elect')
+    })
+}
 
+exports.DeleteWaterBillController = (req,res,next)=>{
+    let WaterId = req.params.id
+    billModel.deleteWaterBill(WaterId).then((DeleteRes)=>{
+          res.redirect('/water')
+    })
+}
+
+exports.DeletePhoneBillController = (req,res,next)=>{
+    let PhoneId = req.params.id
+    billModel.deletePhoneBill(PhoneId).then((DeleteRes)=>{
+          res.redirect('/phone')
+    })
+}
+exports.DeleteNetBillController = (req,res,next)=>{
+    let NetId = req.params.id
+    billModel.deleteNetBill(NetId).then((DeleteRes)=>{
+          res.redirect('/net')
+    })
+}

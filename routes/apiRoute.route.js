@@ -33,21 +33,84 @@ router.post('/register', body, (req,res)=>{
 })
 
 router.get('/getelectbills/:id' , (req,res,next)=>{
-    billmodel.getelectsdataforApi(req.params.id).then((ElectData)=>{
-      res.json({error:false,data:{ElectData},message:"success"})
+    billmodel.getelectsdataForApi(req.params.id).then((ElectData)=>{
+      res.json({error:false,data1:{ElectData},message:"success"})
     }).catch(()=>{
-      res.json({error:true,data:{}})
+      res.json({error:true,data1:{}})
     })
 })
 
 router.get('/getwaterbills/:id' , (req,res,next)=>{
-  billmodel.getewatersdataForApi(req.params.id).then((WaterData)=>{
-    res.json({error:false,data:{WaterData},message:"success"})
+  billmodel.getwatersdataForApi(req.params.id).then((WaterData)=>{
+    res.json({error:false,data2:{WaterData},message:"success"})
   }).catch(()=>{
-    res.json({error:true,data:{}})
+    res.json({error:true,data2:{}})
   })
 })
 
+router.get('/getphonebills/:id' , (req,res,next)=>{
+  billmodel.getphonesdataForApi(req.params.id).then((phoneData)=>{
+    res.json({error:false,data3:{phoneData},message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data3:{}})
+  })
+})
+
+router.get('/getNetbills/:id' , (req,res,next)=>{
+  billmodel.getNetsdataForApi(req.params.id).then((NetData)=>{
+    res.json({error:false,data4:{NetData},message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data4:{}})
+  })
+})
+
+router.get('/getOtherbills/:id' , (req,res,next)=>{
+  billmodel.getOthersdataForApi(req.params.id).then((OthersData)=>{
+    res.json({error:false,data5:{OthersData},message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data5:{}})
+  })
+})
+
+router.get('/DeleteElectBill/:id',(req,res,next)=>{
+  billmodel.deleteElectBillForApi(req.params.id).then((boolRes)=>{
+    res.json({error:false,dataD1:{boolRes},message:"success"})
+
+  }).catch((err)=>{
+    res.json({error:true,dataD1:{}})
+
+  })
+})
+
+router.get('/DeleteWaterBill/:id',(req,res,next)=>{
+  billmodel.deleteWaterBillForApi(req.params.id).then((boolRes)=>{
+    res.json({error:false,dataD2:{boolRes},message:"success"})
+
+  }).catch((err)=>{
+    res.json({error:true,dataD2:{}})
+
+  })
+})
+
+router.get('/DeletePhoneBill/:id',(req,res,next)=>{
+  billmodel.deletePhoneBillForApi(req.params.id).then((boolRes)=>{
+    res.json({error:false,dataD3:{boolRes},message:"success"})
+
+  }).catch((err)=>{
+    res.json({error:true,dataD3:{}})
+
+  })
+})
+
+router.get('/DeleteNetBill/:id',(req,res,next)=>{
+  billmodel.deleteNetBillForApi(req.params.id).then((boolRes)=>{
+    res.json({error:false,dataD4:{boolRes},message:"success"})
+
+  }).catch((err)=>{
+    res.json({error:true,dataD4:{}})
+
+  })
+})
 
 module.exports = router;
 

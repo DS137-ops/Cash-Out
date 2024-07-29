@@ -14,4 +14,8 @@ router.post('/',GuardAuth.isAuth ,multer({
         }
     })
 }).single(["photo"]) , electcontroller.addnewnetbill)
+
+router.get('/deleteNet/:id' , electcontroller.DeleteNetBillController )
+
+
 module.exports = router;

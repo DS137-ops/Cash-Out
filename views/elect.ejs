@@ -358,7 +358,7 @@ font-size: 22px;
         </div>
       </div>
       <div class="in3">
-        <table>
+        <table >
 
           <thead>
             <tr>
@@ -376,8 +376,8 @@ font-size: 22px;
               <td><%- billelect.value %>$</td>
               <td><%- billelect.date %></td>
               <th><img width="50" height="50" src="/uploads/<%= billelect.photo %>"></th>
-              <th><form action="" method="get"><button class="btn btn-danger" >Delete</button> </form>
-             <button class="btn btn-success update" onclick="showUpdate()">Update</button>
+              <th>
+                <a class="btn btn-danger" href="/elect/deleteElect/<%= billelect._id %>" >Delete</a>
             </th>
             </tr>
        <% } %>

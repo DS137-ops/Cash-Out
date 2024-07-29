@@ -16,4 +16,8 @@ router.post('/',GuardAuth.isAuth ,multer({
         }
     })
 }).single(["photo"]) , electcontroller.addnewphonebill )
+
+router.get('/deletePhone/:id' , electcontroller.DeletePhoneBillController )
+
+
 module.exports = router;

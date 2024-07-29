@@ -325,13 +325,13 @@ tbody > tr:nth-of-type(n){
         </div>
       </div>
       <div class="in2">
-        <div class="menu">Net Bills <div><%- sumofit %></div></div>
+        <div class="menu">Net Bills </div>
         <div>
           <button class="addBill btn btn-success">Add new Bill</button>
         </div>
       </div>
       <div class="in3">
-        <table>
+        <table style="border: none;">
 
           <thead>
             <tr>
@@ -348,6 +348,7 @@ tbody > tr:nth-of-type(n){
               <td><%- netbill.value %></td>
               <td><%- netbill.date %></td>
               <td><img width="50" height="50" src="/uploads/<%= netbill.photo %>" alt=""></td>
+              <td><a class="btn btn-danger" href="/net/deleteNet/<%= netbill._id %>" >Delete</a></td>
             </tr>
             <% } %>
           </tbody>
