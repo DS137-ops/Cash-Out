@@ -1,28 +1,145 @@
-<%- include('parts/top.ejs') %>
-    <br>
-    <br>
-    <br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
 
-    <br>
-    <br>
-    <br>
-    <!DOCTYPE html>
-    <html lang="en">
+</head>
+<style>
+      body{
+    box-sizing: border-box;
+    margin: 0;
+    background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);;
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/login.css">
-        <title>Document</title>
-    </head>
+}
 
-    <body>
-        
-    </body>
 
-    </html>
-    <br>
-    <br>
-    <br>
-    <%- include('parts/bottom.ejs') %>
+
+.grid1{
+    display: grid;
+    grid-auto-rows: minmax(100px,auto);
+    grid-template-rows: repeat(11,100px);
+    grid-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-areas:
+    ". img img ."
+    ". img img ."
+    ". img img ."
+    ". img img ."
+    "grid2 grid2 grid2 grid2"
+    "grid2 grid2 grid2 grid2"
+    "grid2 grid2 grid2 grid2"
+    "grid3 grid3 grid3 grid3"
+    "grid3 grid3 grid3 grid3"
+    "grid3 grid3 grid3 grid3"
+    "foot foot foot foot"
+;
+padding: 20px;
+}
+
+.box:hover{
+    transform: scale(1.1);
+ -webkit-transform: scale(1.1);
+ -moz-transform: scale(1.1);
+ -ms-transform: scale(1.1);
+ -o-transform: scale(1.1);
+ transition: all ease-in-out .1s;
+ transition-duration: 1s;
+}
+.box{
+    border-radius: 20px;
+}
+.img{
+    grid-area: img;
+}
+.img img{
+    /* background-image: url("arc.jpg"); */
+    width: 90%;
+    height: 90%;
+}
+
+.grid2{
+    grid-area: grid2;
+    display: grid;
+    grid-auto-rows: minmax(100px,auto);
+    grid-template-rows: repeat(3,100px);
+    grid-gap: 0px;
+    grid-template-areas:
+   ". card1 card1 . card2 card2 . card3 card3 ."
+    ". card1 card1 . card2 card2 . card3 card3 ."
+    ". card1 card1 . card2 card2 . card3 card3 ."
+    ;
+
+}
+
+.card1{
+    grid-area: card1;  
+    background-color: sandybrown;
+}
+.card2{
+    grid-area: card2;
+    background-color: sandybrown;
+
+}
+.card3{
+    grid-area: card3;
+    background-color: sandybrown;
+
+}
+
+.grid3{
+    grid-area: grid3;
+    display: grid;
+    grid-auto-rows: minmax(100px,auto);
+    grid-template-rows: repeat(3,100px);
+    grid-gap: 0px;
+    grid-template-areas:
+    ". card4 card4 . card5 card5 . card6 card6 ."
+    ". card4 card4 . card5 card5 . card6 card6 ."
+    ". card4 card4 . card5 card5 . card6 card6 ."
+    ;
+}
+.card4{
+    grid-area: card4;
+    background-color: sandybrown;
+
+}
+.card5{
+    grid-area: card5;
+    background-color: sandybrown;
+
+}
+.card6{
+    grid-area: card6;
+    background-color: sandybrown;
+
+}
+
+.foot{
+    grid-area: foot;
+}
+</style>
+<body>
+    <div class="grid1">
+    <div class="img "><img src="/helpful.png" alt="" ></div>
+
+    <div class="grid2 ">
+        <div class="card1 box"></div>
+        <div class="card2 box"></div>
+        <div class="card3 box"></div>
+    </div>
+
+    <div class="grid3 box">
+    <div class="card4 box"></div>
+    <div class="card5 box"></div>
+    <div class="card6 box"></div>
+    </div>
+
+    <footer class="foot box"></footer>
+
+    </div>
+    
+</body>
+</html>

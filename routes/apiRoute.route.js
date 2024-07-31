@@ -112,5 +112,15 @@ router.get('/DeleteNetBill/:id',(req,res,next)=>{
   })
 })
 
+router.post('/updateBudgetBill/:id',body,(req,res,next)=>{
+  authmodel.updateBudgetBillForApi(req.params.id,req.body.value).then((updatedBudget)=>{
+    res.json({error:false,dataU1:{updatedBudget},message:"success"})
+
+  }).catch((err)=>{
+    console.log(err)
+
+  })
+})
+
 module.exports = router;
 
