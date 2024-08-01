@@ -113,11 +113,13 @@ router.get('/DeleteNetBill/:id',(req,res,next)=>{
 })
 
 router.post('/updateBudgetBill/:id',body,(req,res,next)=>{
-  authmodel.updateBudgetBillForApi(req.params.id,req.body.value).then((updatedBudget)=>{
-    res.json({error:false,dataU1:{updatedBudget},message:"success"})
+  authmodel.updateBudgetBillForApi(req.body.padgetval,req.body.padgDate1,req.body.padgDate2 , req.params.id).then(()=>{
+
+    res.json({error:false,message:"success"})
 
   }).catch((err)=>{
     console.log(err)
+    res.json({error:true,message:"failed"})
 
   })
 })

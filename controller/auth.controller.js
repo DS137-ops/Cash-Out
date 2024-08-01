@@ -31,10 +31,16 @@ exports.showregisterpage = (req, res, next) => {
 }
 
 exports.addPadget = (req,res,next)=>{
-      authmodel.adduserPadget(req.body.padgetval,req.body.padgDate,req.session.userid).then((respadg)=>{
-            
+      authmodel.adduserPadget(req.body.padgetval,req.body.padgDate1,req.body.padgDate2,req.session.userid).then((respadg)=>{
             authmodel.gethomedata(req.session.userid).then((userdata)=>{
                   res.render('bills',{respadg:respadg,userdata: userdata, verifuser: req.session.userid})
             })
       })
+}
+exports.showPageBudget = (req,res,next)=>{
+      authmodel.gethomedata(req.session.userid).then((userdata)=>{
+            authmodel.getuserPadget(req.session.userid).then((userBudget)=>{
+                  res.render('setbudget',{userBudget:userBudget,userdata: userdata, verifuser: req.session.userid})
+            })
+      }) 
 }

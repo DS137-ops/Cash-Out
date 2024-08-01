@@ -29,6 +29,10 @@ var newSchema = mongoose.Schema({
       FinalDatePadget: {
         type: Date,
         default: () => Date.now() + 1000 * 60 * 60 * 24 * 30
+      },
+      StartDatePadget: {
+        type: Date,
+        default: () => Date.now() + 1000 * 60 * 60 * 24 * 30
       }
 })
 var users = mongoose.model('users', newSchema)
@@ -156,7 +160,21 @@ exports.gethomedata = (id) => {
     })
 }
 
-exports.adduserPadget = (padget2,padgDate,id)=>{
+exports.adduserPadget = (padget2,padgDate1,padgDate2,id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(uri).then(()=>{
+             users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{   padget:padget2     ,StartDatePadget:padgDate1 ,FinalDatePadget:padgDate2 }}  )
+            .then((userpadg)=>{
+                mongoose.disconnect()
+                resolve(padget2)
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
+        })
+    })
+}
+exports.adduserPadgetForApi = (padget2,padgDate,id)=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(uri).then(()=>{
              users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{   padget:padget2     ,FinalDatePadget:padgDate}}  )
@@ -177,7 +195,7 @@ exports.getuserPadget = (id)=>{
             return users.findById(id)
             .then((userpadg)=>{
                 mongoose.disconnect()
-                resolve(userpadg.padget)
+                resolve(userpadg)
             }).catch((err)=>{
                 mongoose.disconnect()
                 reject(err)
@@ -202,19 +220,17 @@ exports.updatePadget = (id,val)=>{
         })
     })
 }
-exports.updateBudgetBillForApi = (id,val)=>{
+exports.updateBudgetBillForApi = (val,sdate,edate,id)=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(uri).then(()=>{
-            return users.findById(id)
-        }).then((userpadget)=>{
-            var userpadget_2 = userpadget.padget
-           return users.updateOne({_id:new mongoose.Types.ObjectId(id)} , {$set:{padget:userpadget_2 - val }})
-        }).then((userit)=>{
-            mongoose.disconnect()
-                resolve(userit)
-        }).catch((err)=>{
-            mongoose.disconnect()
-            reject(err)
+             users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{   padget:val     ,StartDatePadget:sdate ,FinalDatePadget:edate }}  )
+            .then((userpadg)=>{
+                mongoose.disconnect()
+                resolve(userpadg)
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
         })
     })
 }
@@ -233,4 +249,6 @@ exports.postupdateprofile = ( name , password , city , email , id )=>{
         })
     })
 }
+
+
 
