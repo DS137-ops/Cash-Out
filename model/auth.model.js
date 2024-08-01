@@ -27,11 +27,11 @@ var newSchema = mongoose.Schema({
        
       },
       FinalDatePadget: {
-        type: Date,
+        type: String,
         default: () => Date.now() + 1000 * 60 * 60 * 24 * 30
       },
       StartDatePadget: {
-        type: Date,
+        type: String,
         default: () => Date.now() + 1000 * 60 * 60 * 24 * 30
       }
 })
