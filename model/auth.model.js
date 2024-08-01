@@ -38,7 +38,7 @@ var newSchema = mongoose.Schema({
 var users = mongoose.model('users', newSchema)
 exports.postdatamodel = (name, email, password, city) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(() => {
+        mongoose.connect(globalconnect).then(() => {
             return users.findOne({ email: email })
         }).then((user) => {
             if (user) {
@@ -69,7 +69,7 @@ exports.postdatamodel = (name, email, password, city) => {
 
 exports.postdatamodelforapi = (name, email, password, city) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(() => {
+        mongoose.connect(globalconnect).then(() => {
             return users.findOne({ email: email })
         }).then((user) => {
             if (user) {
@@ -100,7 +100,7 @@ exports.postdatamodelforapi = (name, email, password, city) => {
 
 exports.userloginmodel = (email, password) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(() => {
+        mongoose.connect(globalconnect).then(() => {
             return users.findOne({ email: email })
         }).then((user) => {
             if (user) {
@@ -123,7 +123,7 @@ exports.userloginmodel = (email, password) => {
 
             exports.userloginmodelforapi = (email, password) => {
                 return new Promise((resolve, reject) => {
-                    mongoose.connect(uri).then(() => {
+                    mongoose.connect(globalconnect).then(() => {
                         return users.findOne({ email: email })
                     }).then((user) => {
                         if (user) {
@@ -149,7 +149,7 @@ exports.userloginmodel = (email, password) => {
 
 exports.gethomedata = (id) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(() => {
+        mongoose.connect(globalconnect).then(() => {
             return users.findById(id)
         }).then((userdata) => {
             mongoose.disconnect()
@@ -162,7 +162,7 @@ exports.gethomedata = (id) => {
 
 exports.adduserPadget = (padget2,padgDate1,padgDate2,id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
              users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{   padget:padget2     ,StartDatePadget:padgDate1 ,FinalDatePadget:padgDate2 }}  )
             .then((userpadg)=>{
                 mongoose.disconnect()
@@ -176,7 +176,7 @@ exports.adduserPadget = (padget2,padgDate1,padgDate2,id)=>{
 }
 exports.adduserPadgetForApi = (padget2,padgDate,id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
              users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{   padget:padget2     ,FinalDatePadget:padgDate}}  )
             .then((userpadg)=>{
                 mongoose.disconnect()
@@ -191,7 +191,7 @@ exports.adduserPadgetForApi = (padget2,padgDate,id)=>{
 
 exports.getuserPadget = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return users.findById(id)
             .then((userpadg)=>{
                 mongoose.disconnect()
@@ -206,7 +206,7 @@ exports.getuserPadget = (id)=>{
 
 exports.updatePadget = (id,val)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return users.findById(id)
         }).then((userpadget)=>{
             var userpadget_1 = userpadget.padget
@@ -222,7 +222,7 @@ exports.updatePadget = (id,val)=>{
 }
 exports.updateBudgetBillForApi = (val,sdate,edate,id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
              users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{   padget:val     ,StartDatePadget:sdate ,FinalDatePadget:edate }}  )
             .then((userpadg)=>{
                 mongoose.disconnect()
@@ -238,7 +238,7 @@ exports.updateBudgetBillForApi = (val,sdate,edate,id)=>{
 
 exports.postupdateprofile = ( name , password , city , email , id )=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:password , city:city , email:email}}  )
         }).then(()=>{
             resolve("updated")

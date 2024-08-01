@@ -14,7 +14,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     
     exports.addelectnewbill = (name,value,date,photo,userid) =>{
         return new Promise((resolve, reject) => {
-            mongoose.connect(uri).then(()=>{
+            mongoose.connect(globalconnect).then(()=>{
                     let newbook = new billss({
                     
                         name:name,
@@ -39,7 +39,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
 
     exports.getelectsdata = (id)=>{
         return new Promise((resolve, reject) => {
-            mongoose.connect(uri).then(()=>{
+            mongoose.connect(globalconnect).then(()=>{
                 return billss.find({userid:id,billtype:"elect"})
             }).then((bills)=>{
                 mongoose.disconnect()
@@ -52,7 +52,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
 
     exports.addwaternewbill = (name,value,date,photo,userid)=>{
         return new Promise((resolve, reject) => {
-            mongoose.connect(uri).then(()=>{
+            mongoose.connect(globalconnect).then(()=>{
                 
             }).then(()=>{
                 let newbook = new billss({
@@ -77,7 +77,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
 
     exports.getwatersdata = (id)=>{
         return new Promise((resolve, reject) => {
-            mongoose.connect(uri).then(()=>{
+            mongoose.connect(globalconnect).then(()=>{
                 return billss.find({userid:id,billtype:"water"})
             }).then((bills)=>{
                 mongoose.disconnect()
@@ -91,7 +91,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
 
 exports.addphonenewbill = (name,value,date,photo,userid) =>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             let newbook = new billss({
                     
                 name:name,
@@ -114,7 +114,7 @@ exports.addphonenewbill = (name,value,date,photo,userid) =>{
 
 exports.getphonesdata = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return billss.find({userid:id,billtype:"phone"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -127,7 +127,7 @@ exports.getphonesdata = (id)=>{
 }
 exports.getOthersdataForApi = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return billss.find({userid:id,billtype:"other"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -141,7 +141,7 @@ exports.getOthersdataForApi = (id)=>{
 
 exports.getphonesdataForApi = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return billss.find({userid:id,billtype:"phone"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -156,7 +156,7 @@ exports.getphonesdataForApi = (id)=>{
 
 exports.addnetnewbill = (name,value,date,photo,userid) =>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             let newbook = new billss({
                     
                 name:name,
@@ -180,7 +180,7 @@ exports.addnetnewbill = (name,value,date,photo,userid) =>{
 
 exports.getnetsdata = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return billss.find({userid:id,billtype:"net"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -193,7 +193,7 @@ exports.getnetsdata = (id)=>{
 }
 exports.getNetsdataForApi = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return billss.find({userid:id,billtype:"net"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -207,7 +207,7 @@ exports.getNetsdataForApi = (id)=>{
 
 exports.getsum = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.find({_id:id , billtype:"net"})
         }).then((user)=>{
             return billss.aggregate([{$match:{pid:{$eq:user.userid}}}, {$group:{_id:'663248a810678f31c83f7970',sum:{$sum:'$value'}}}])
@@ -225,7 +225,7 @@ exports.getsum = (id)=>{
 
 exports.getelectsdataForApi = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return billss.find({userid:id,billtype:"elect"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -238,7 +238,7 @@ exports.getelectsdataForApi = (id)=>{
 
 exports.getwatersdataForApi = (id)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
             return billss.find({userid:id, billtype:"water"})
         }).then((bills)=>{
             mongoose.disconnect()
@@ -252,7 +252,7 @@ exports.getwatersdataForApi = (id)=>{
 
 exports.deleteElectBill = (ElectId)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:ElectId})
         }).then((resElect)=>{
             resolve(true)
@@ -265,7 +265,7 @@ exports.deleteElectBill = (ElectId)=>{
 
 exports.deleteElectBillForApi = (ElectId)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:ElectId})
         }).then((resElect)=>{
             resolve(true)
@@ -277,7 +277,7 @@ exports.deleteElectBillForApi = (ElectId)=>{
 
 exports.deleteWaterBill = (WaterId)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:WaterId})
         }).then((resWater)=>{
             resolve(true)
@@ -288,7 +288,7 @@ exports.deleteWaterBill = (WaterId)=>{
 }
 exports.deleteWaterBillForApi = (WaterId)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:WaterId})
         }).then((resWater)=>{
             resolve(true)
@@ -300,7 +300,7 @@ exports.deleteWaterBillForApi = (WaterId)=>{
 
 exports.deletePhoneBill = (PhoneId)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:PhoneId})
         }).then((resPhone)=>{
             resolve(true)
@@ -311,7 +311,7 @@ exports.deletePhoneBill = (PhoneId)=>{
 }
 exports.deletePhoneBillForApi = (PhoneId)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:PhoneId})
         }).then((resPhone)=>{
             resolve(true)
@@ -323,7 +323,7 @@ exports.deletePhoneBillForApi = (PhoneId)=>{
 
 exports.deleteNetBill = (NetId)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:NetId})
         }).then((resNet)=>{
             resolve(true)
@@ -334,7 +334,7 @@ exports.deleteNetBill = (NetId)=>{
 }
 exports.deleteNetBillForApi = (NetId)=>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(uri).then(()=>{
+        mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:NetId})
         }).then((resNet)=>{
             resolve(true)
