@@ -127,7 +127,7 @@ router.post('/updateBudgetBill/:id',body,(req,res,next)=>{
 router.get('/getUserBudget/:id',body,(req,res,next)=>{
   authmodel.getuserPadget(req.params.id).then((userBudget)=>{
 
-    res.json({error:false,userBudg:{userBudget},message:"success"})
+    res.json({error:false,userBudget,message:"success"})
 
   }).catch((err)=>{
     console.log(err)
