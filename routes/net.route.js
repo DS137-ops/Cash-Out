@@ -10,6 +10,7 @@ router.post('/',GuardAuth.isAuth ,multer({
             cb(null,'assets/uploads')
         },
         filename:function(req,file,cb){
+            console.log(file.originalname)
             cb(null,Date.now()+'.'+file.originalname)
         }
     })
