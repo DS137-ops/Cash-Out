@@ -144,5 +144,13 @@ router.get('/getReminder/:id',(req,res)=>{
   })
 })
 
+router.post('/AddReminder/:id',body,(req,res)=>{
+  authmodel.PostDataReminderForApi(req.body.RemVal,req.body.RemDate,req.params.id).then((Reminders)=>{
+    res.json({error:false , message:'success'})
+  }).catch((err)=>{
+    res.json({error:true , err})
+  })
+})
+
 module.exports = router;
 

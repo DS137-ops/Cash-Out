@@ -268,6 +268,19 @@ exports.PostDataReminder = (val , date , id)=>{
         })
     })
 }
+exports.PostDataReminderForApi = (val2 , date2 , id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$push:{Reminders:{RemDesc:val2 , RemDate:date2}}}  )
+        }).then(()=>{
+            resolve("")
+        })
+        .catch((err)=>{
+            mongoose.disconnect()
+            reject("")
+        })
+    })
+}
 
 exports.getReminders = (id)=>{
     return new Promise((resolve, reject) => {
