@@ -22,6 +22,8 @@ exports.addnewelectbill = (req,res,next)=>{
     })
 }
 
+
+
 exports.getwaterpage = (req, res, next) => {
     authmodel.gethomedata(req.session.userid).then((userdata) => {
         billModel.getwatersdata(req.session.userid).then((waterdata)=>{
@@ -54,6 +56,7 @@ exports.getphonepage = (req,res,next)=>{
     })
    
 }
+
 
 exports.addnewphonebill = (req,res,next)=>{
     billModel.addphonenewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{

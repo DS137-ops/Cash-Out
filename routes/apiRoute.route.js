@@ -136,6 +136,13 @@ router.get('/getUserBudget/:id',body,(req,res,next)=>{
   })
 })
 
+router.get('/getReminder/:id',(req,res)=>{
+  authmodel.getRemindersForApi(req.params.id).then((Reminders)=>{
+    res.json({error:false , Reminders, message:'success'})
+  }).catch((err)=>{
+    res.json({error:true , err})
+  })
+})
 
 module.exports = router;
 

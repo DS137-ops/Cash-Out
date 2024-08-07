@@ -33,7 +33,11 @@ var newSchema = mongoose.Schema({
       StartDatePadget: {
         type: String,
         default: () => Date.now() + 1000 * 60 * 60 * 24 * 30
-      }
+      },
+      Reminders:[{
+        RemDesc:String,
+        RemDate:String
+      }]
 })
 var users = mongoose.model('users', newSchema)
 exports.postdatamodel = (name, email, password, city) => {
@@ -251,4 +255,41 @@ exports.postupdateprofile = ( name , password , city , email , id )=>{
 }
 
 
+exports.PostDataReminder = (val , date , id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$push:{Reminders:{RemDesc:val , RemDate:date}}}  )
+        }).then(()=>{
+            resolve("Rem")
+        })
+        .catch((err)=>{
+            mongoose.disconnect()
+            reject("not Rem")
+        })
+    })
+}
 
+exports.getReminders = (id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+          return users.findById(id)
+        }).then((userRem)=>{
+            resolve(userRem.Reminders)
+        })
+        .catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+exports.getRemindersForApi = (id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            return users.findById(id)
+        }).then((Remres)=>{
+            resolve(Remres.Reminders)
+        }).catch((err)=>{
+            reject(err)
+        })
+    })
+}

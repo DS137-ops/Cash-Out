@@ -11,6 +11,8 @@
     body{
     box-sizing: border-box;
     margin: 0;
+    background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+
 }
 
 
@@ -36,7 +38,7 @@
 ;
 padding: 20px;
 }
-.box:hover{
+.card1:hover,.card2:hover,.card3:hover,.card4:hover,.card5:hover,.card6:hover {
     transform: scale(1.1);
  -webkit-transform: scale(1.1);
  -moz-transform: scale(1.1);
@@ -47,6 +49,8 @@ padding: 20px;
 }
 .box{
     border-radius: 20px;
+   margin: 5px;
+
 }
 
 .img{
@@ -65,25 +69,24 @@ padding: 20px;
     grid-template-rows: repeat(3,100px);
     grid-gap: 0px;
     grid-template-areas:
-    ". card1 card1 card1 card1 card1 . card2 card2 card2 card2 card2 . card3 card3 card3 card3 card3 ."
-    ". card1 card1 card1 card1 card1 . card2 card2 card2 card2 card2 . card3 card3 card3 card3 card3 ."
-    ". card1 card1 card1 card1 card1 . card2 card2 card2 card2 card2 . card3 card3 card3 card3 card3 ."
+    ". card1 card1 card1 card1  . card2 card2 card2 card2  . card3 card3 card3 card3  ."
+    ". card1 card1 card1 card1  . card2 card2 card2 card2  . card3 card3 card3 card3  ."
+    ". card1 card1 card1 card1  . card2 card2 card2 card2  . card3 card3 card3 card3  ."
     ;
 
 }
 
 .card1{
     grid-area: card1;  
-    background-color: sandybrown;
 }
 .card2{
     grid-area: card2;
-    background-color: sandybrown;
+
 
 }
 .card3{
     grid-area: card3;
-    background-color: sandybrown;
+   
 
 }
 
@@ -94,50 +97,111 @@ padding: 20px;
     grid-template-rows: repeat(3,100px);
     grid-gap: 0px;
     grid-template-areas:
-    ". card4 card4 card4 card4 card4 . card5 card5 card5 card5 card5 . card6 card6 card6 card6 card6 ."
-    ". card4 card4 card4 card4 card4 . card5 card5 card5 card5 card5 . card6 card6 card6 card6 card6 ."
-    ". card4 card4 card4 card4 card4 . card5 card5 card5 card5 card5 . card6 card6 card6 card6 card6 ."
+    ". card4 card4 card4 card4  . card5 card5 card5 card5  . card6 card6 card6 card6  ."
+    ". card4 card4 card4 card4  . card5 card5 card5 card5  . card6 card6 card6 card6  ."
+    ". card4 card4 card4 card4  . card5 card5 card5 card5  . card6 card6 card6 card6  ."
     ;
 }
 .card4{
     grid-area: card4;
-    background-color: sandybrown;
+
 
 }
 .card5{
     grid-area: card5;
-    background-color: sandybrown;
 
 }
 .card6{
     grid-area: card6;
-    background-color: sandybrown;
+
 
 }
 
 .foot{
     grid-area: foot;
 }
+
+.tips{
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    margin-left: 50px;
+}
+.label1{
+    width: 80%;
+    color: #fff;
+    font-weight: 600;
+    height: 80px;
+    text-align: center;
+    font-size: 30px;
+    background-color: orange;
+    border: 1px solid orange;
+    border-radius: 20px;
+    margin-left: 50px;
+}
+
+
+
+.large-image {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;  
+
+    z-index: 999;
+}
+
+.large-image img {
+    max-width: 80%;
+    max-height: 80%;
+}
 </style>
 <body>
+    <div class="large-image" id="large-image1"></div>
+    <div class="large-image" id="large-image2"></div>
+    <div class="large-image" id="large-image3"></div>
+
     <div class="grid1">
     <div class="img "><img src="/helpful.png" alt="" ></div>
 
     <div class="grid2 ">
-        <div class="card1 box"></div>
-        <div class="card2 box"></div>
-        <div class="card3 box"></div>
+        <div class="card1 box"><header  class="label1">5 Budgeting Challenges And How To Overcome Them</header> <img src="/budget1.jpg" data-large-image="large-image1" class="tips tips1" alt="" ></div>
+        <div class="card2 box"><header  class="label1">5 Tips To Stay With In Budget</header><img src="/budget2.jpg" class="tips tips1" data-large-image="large-image2" alt="" ></div>
+        <div class="card3 box"><header  class="label1">Warning Signs To Look For</header><img src="/budget3.jpg" class="tips tips1" data-large-image="large-image3" alt="" ></div>
     </div>
 
     <div class="grid3 box">
-    <div class="card4 box"></div>
-    <div class="card5 box"></div>
-    <div class="card6 box"></div>
+    <div class="card4 box"><header  class="label1">Tasking Debt Is Normal</header><img src="/budget4.jpg" class="tips tips1" alt="" ></div>
+    <div class="card5 box"><header  class="label1">Dos And Don'Ts Of Debt Management</header><img src="/budget5.jpg" class="tips tips1" alt="" ></div>
+    <div class="card6 box"><header  class="label1">How To Stay Debt-Free As Family</header><img src="/budget6.jpg" class="tips tips1" alt="" ></div>
     </div>
 
     <footer class="foot box"></footer>
 
     </div>
-    
+    <script>
+        const smallImages = document.querySelectorAll('.tips');
+        const largeImages = document.querySelectorAll('.large-image');
+
+smallImages.forEach(image => {
+  image.addEventListener('click', () => {
+    const largeImageId = image.dataset.largeImage;
+    const largeImage = document.getElementById(largeImageId);
+    largeImage.style.display = 'flex';
+    largeImage.innerHTML = `<img src="${image.src}" alt="Enlarged Image">`;
+  });
+});
+
+largeImages.forEach(image => {
+  image.addEventListener('click', () => {
+    image.style.display = 'none';
+  });
+});
+    </script>
 </body>
 </html>
