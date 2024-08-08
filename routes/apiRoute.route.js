@@ -2,6 +2,7 @@ const billscontroller = require('../controller/api.controller')
 const authcontroller = require('../controller/auth.controller')
 const electController = ('../controller/elect.controller')
 const registercontroller = require('../controller/auth.controller')
+const remindersController = require('../controller/reminder.controller')
 const multer = require('multer')
 const GuardAuth = require('./guardAuth')
 const authmodel = require('../model/auth.model')
@@ -33,24 +34,25 @@ router.post('/register', body, (req,res)=>{
 })
 
 router.get('/getelectbills/:id' , (req,res,next)=>{
-    billmodel.getelectsdataForApi(req.params.id).then((ElectData)=>{
-      res.json({error:false,data1:{ElectData},message:"success"})
+    billmodel.getelectsdataForApi(req.params.id).then((NetData)=>{
+      res.json({error:false,data4:{NetData},message:"success"})
     }).catch(()=>{
       res.json({error:true,data1:{}})
     })
 })
 
 router.get('/getwaterbills/:id' , (req,res,next)=>{
-  billmodel.getwatersdataForApi(req.params.id).then((WaterData)=>{
-    res.json({error:false,data2:{WaterData},message:"success"})
+  billmodel.getwatersdataForApi(req.params.id).then((NetData)=>{
+    res.json({error:false,data4:{NetData},message:"success"})
+
   }).catch(()=>{
     res.json({error:true,data2:{}})
   })
 })
 
 router.get('/getphonebills/:id' , (req,res,next)=>{
-  billmodel.getphonesdataForApi(req.params.id).then((phoneData)=>{
-    res.json({error:false,data3:{phoneData},message:"success"})
+  billmodel.getphonesdataForApi(req.params.id).then((NetData)=>{
+    res.json({error:false,data4:{NetData},message:"success"})
   }).catch(()=>{
     res.json({error:true,data3:{}})
   })
@@ -65,8 +67,8 @@ router.get('/getNetbills/:id' , (req,res,next)=>{
 })
 
 router.get('/getOtherbills/:id' , (req,res,next)=>{
-  billmodel.getOthersdataForApi(req.params.id).then((OthersData)=>{
-    res.json({error:false,data5:{OthersData},message:"success"})
+  billmodel.getOthersdataForApi(req.params.id).then((NetData)=>{
+    res.json({error:false,data4:{NetData},message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
   })
@@ -151,6 +153,5 @@ router.post('/AddReminder/:id',body,(req,res)=>{
     res.json({error:true , err})
   })
 })
-
 module.exports = router;
 

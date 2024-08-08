@@ -118,3 +118,12 @@ exports.DeleteNetBillController = (req,res,next)=>{
           res.redirect('/net')
     })
 }
+
+exports.getRemindersPage = (req,res,next)=>{
+    authmodel.gethomedata(req.session.userid).then((userdata)=>{
+        authmodel.getReminders(req.session.userid).then((ResRem)=>{
+            res.render('reminder',{ResRem:ResRem,verifuser:req.session.userid,userdata:userdata})
+
+        })
+    })
+}

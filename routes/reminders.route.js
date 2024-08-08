@@ -6,6 +6,8 @@ const body = require('express').urlencoded({ extended: true })
 const GuardAuth = require('../routes/guardAuth')
 
 const router = require('express').Router()
-router.get('/',GuardAuth.isAuth,remindersController.getRemindersPage)
-router.post('/',body,remindersController.PostReminder)
+
+router.get('/' , electController.getRemindersPage)
+router.post('/' , electController.getRemindersPage)
+
 module.exports = router
