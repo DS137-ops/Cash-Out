@@ -1,0 +1,410 @@
+<%- include('parts/top.ejs') %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: minmax(100px, auto);
+        grid-template-areas:
+          "in1 in1 in1 in1"
+          "in2 in2 in2 in2"
+          "in3 in3 in3 in3"
+        ;
+        grid-gap: 10px;
+        opacity: .7;
+
+      }
+tbody > tr:nth-of-type(n){
+  background-color: white;
+}
+      .in1 {
+        grid-area: in1;
+        animation: elemove 1s alternate-reverse 1s;
+        display: flex;
+        position: relative;
+      }
+
+      .in1>div {
+        width: 33.33%;
+      }
+
+      #in2hidd {
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 30px;
+        color: #fff;
+      }
+
+      .in2 {
+        grid-area: in2;
+        border-top: 1px solid black;
+        padding-top: 10px;
+        text-align: center;
+        display: flex;
+      }
+
+      .in2>diV {
+        width: 50%;
+        color: #fff;
+        text-align: left;
+      }
+
+      .in3 {
+        grid-area: in3;
+      }
+
+      .menu {
+        font-size: 20px;
+      }
+
+      .addBill {
+        float: right;
+      }
+
+      table {
+        border-collapse: collapse;
+        border: 2px solid rgb(140 140 140);
+        font-family: sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        width: 100%;
+        text-align: center;
+      }
+
+      thead {
+        background-color: rgb(233, 228, 245);
+      }
+
+      th,
+      td {
+        border: 1px solid rgb(160 160 160);
+        padding: 8px 10px;
+      }
+
+      td:last-of-type {
+        text-align: center;
+      }
+
+      tbody>tr:nth-of-type(even) {
+       
+      }
+
+      tfoot th {
+        text-align: right;
+      }
+
+      tfoot td {
+        font-weight: bold;
+      }
+
+      .addBill {
+        float: right;
+      }
+
+
+      .all2 {
+        display: none;
+      }
+
+      .AddBillInterFace {
+        width: 80%;
+        position: absolute;
+        background-color: grey;
+        z-index: 4;
+        margin: auto;
+
+        left: 50%;
+        margin-left: -572px;
+        padding: 5px;
+      }
+
+      .bodyAddBill {
+        padding: 8px;
+      }
+
+      .divInfo {
+        width: 100%;
+        height: auto;
+        display: flex;
+        position: relative;
+        padding: 10px;
+      }
+
+      @media (max-width:767px) {
+        .AddBillInterFace {
+          left: 1px;
+          margin-left: 0px;
+          width: 100%;
+        }
+      }
+
+      .editdata {
+        margin: auto;
+        width: 20%;
+        font-size: 25px;
+      }
+      tbody > tr:nth-of-type(n){
+        background-color: #fff;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .custom-file-upload {
+        border: 1px solid green;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+
+      .inputName {
+        width: 100%;
+      }
+
+      .labeName {
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #fff;
+      }
+
+      .showw {
+        display: block;
+      }
+
+      .hidd {
+        display: none;
+      }
+
+
+
+
+      .AddBillInterFace {
+    width: 80%;
+    position: absolute;
+    background-color: grey;
+    z-index: 4;
+    margin: auto;
+    left: 50%;
+    margin-left: -572px;
+    padding: 5px;
+  }
+
+  .bodyAddBill {
+    padding: 8px;
+  }
+
+  .divInfo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: relative;
+    padding: 10px;
+  }
+
+  @media (max-width:767px) {
+    .AddBillInterFace {
+      left: 1px;
+      margin-left: 0px;
+      width: 100%;
+    }
+  }
+
+  .editdata {
+    margin: auto;
+    width: max-content;
+    font-size: 25px;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .custom-file-upload {
+    border: 1px solid green;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  .inputName {
+    width: 100%;
+  }
+
+  .labeName {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+  }
+
+  .warning{
+    margin-left: auto;
+  }
+  .padgetDiv{
+    position: relative;
+    
+    top: 50%;
+    margin-top: -15px;
+  }
+  .spangreen{
+color: green;
+font-size: 22px;
+  }
+  .spanred{
+color: red;
+font-size: 22px;
+  }
+    </style>
+  </head>
+
+  <body>
+    <div class="tog hidd">
+      <form action="/addclothesbill" method="post" enctype="multipart/form-data">
+        <div class="AddBillInterFace">
+          <div style="display: flex; width: 100%; ">
+            <header
+              style="text-align: center; width:90%; font-size: 27px; margin: auto; font-weight: 600; border-bottom: 1px solid blue;">
+              Your bill information</header><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="currentColor" id="x" class="x ui-svg-inline" style="position: absolute; right:5px;cursor: pointer; ">
+              <path class=""
+                d="M13.41,12l4.3-4.29a1,1,0,1,0-1.42-1.42L12,10.59,7.71,6.29A1,1,0,0,0,6.29,7.71L10.59,12l-4.3,4.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z">
+              </path>
+            </svg>
+          </div><br>
+          <div class="bodyAddbill">
+            
+            <div class="divInfo divInfo1">
+              <div style="margin: auto;"><label for="name"
+                  class="labeName">Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" data_mat="fgt"  class="inputName"
+                  placeholder="Name of bill" name="name"></div>
+            </div>
+            <div class="divInfo divInfo2">
+              <div style="margin: auto;"><label for="value"
+                  class="labeName">Value</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" class="inputName"
+                  placeholder=" XX $" name="value"></div>
+            </div>
+            <div class="divInfo divInfo3">
+                <div style="margin: auto;"><label for="brand"
+                    class="labeName">Brand</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputName"
+                    placeholder="Zara" name="brand"></div>
+              </div>
+            <div class="divInfo divInfo3">
+              <div style="margin: auto;"><input style="" type="date" value="" class="inputName inputdate"
+                  placeholder="YYYY-MM-DD" name="date" id="currentDate"></div>
+            </div>
+            <div class="divInfo divInfo4">
+              <div style="margin: auto;"><label for="file-upload" class="custom-file-upload" style="color:#fff">
+                  Upload bill photo
+                </label>
+                <input id="file-upload" type="file" name="photo" />
+              </div>
+            </div>
+            <div class="divInfo divInfo5">
+              <button class="editdata btn btn-success">Upload</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <div class="in1">
+        <div class="in11">
+          
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 100px; height:100px; float:right ; color:blue" viewBox="0 0 32 32" id="Shirt"><path d="M28.664 32H3.336A3.34 3.34 0 0 1 0 28.664V7.271a3.34 3.34 0 0 1 3.336-3.336h3.32a1 1 0 0 1 .717.302l5.838 5.998 1.922-3.34c.357-.62 1.377-.62 1.734 0l1.922 3.34 5.838-5.998a1 1 0 0 1 .717-.302h3.32A3.34 3.34 0 0 1 32 7.27v21.393A3.34 3.34 0 0 1 28.664 32zM3.336 5.935C2.599 5.935 2 6.534 2 7.27v21.393C2 29.401 2.6 30 3.336 30h25.328c.737 0 1.336-.6 1.336-1.336V7.271c0-.737-.6-1.336-1.336-1.336h-2.898L19.3 12.579a1 1 0 0 1-1.583-.2L16 9.4l-1.715 2.98a1 1 0 0 1-1.584.2L6.234 5.935H3.336z" fill="#25a2d0" class="color000000 svgShape"></path><path d="M16 8.394a.998.998 0 0 1-.643-.234L7.738 1.766A1 1 0 0 1 8.381 0h15.238a.999.999 0 0 1 .643 1.766l-7.62 6.394a.998.998 0 0 1-.642.234zM11.128 2 16 6.088 20.872 2h-9.744z" fill="#25a2d0" class="color000000 svgShape"></path><path d="M13.418 12.881c-.268 0-.527-.108-.717-.302L5.94 5.632a1.001 1.001 0 0 1-.2-1.099L7.466.6A1 1 0 0 1 9.023.234l7.62 6.393a1 1 0 0 1 .224 1.265l-2.582 4.488a1 1 0 0 1-.867.501zM7.842 4.72l5.37 5.515 1.503-2.614-5.954-4.997-.92 2.096z" fill="#25a2d0" class="color000000 svgShape"></path><path d="M18.582 12.881a1 1 0 0 1-.867-.501l-2.582-4.488a1 1 0 0 1 .224-1.265l7.62-6.393a.998.998 0 0 1 1.558.365l1.725 3.934c.163.373.085.807-.199 1.1l-6.762 6.946c-.19.194-.449.302-.717.302zm-1.297-5.26 1.504 2.614 5.37-5.515-.92-2.096-5.954 4.997zm3.879 6.35v4.58a3.412 3.412 0 0 0 6.824 0v-4.58h-6.824z" fill="#25a2d0" class="color000000 svgShape"></path><circle cx="16" cy="13.971" r="1" fill="#25a2d0" class="color000000 svgShape"></circle><circle cx="16" cy="18.314" r="1" fill="#25a2d0" class="color000000 svgShape"></circle><circle cx="16" cy="22.657" r="1" fill="#25a2d0" class="color000000 svgShape"></circle><circle cx="16" cy="27" r="1" fill="#25a2d0" class="color000000 svgShape"></circle>
+            </svg>
+        </div>
+        <div id="in2hidd">Clothing Section</div>
+        <div class="in33">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 100px; height:100px; float:left ; color:blue" viewBox="0 0 32 32" id="Shirt"><path d="M28.664 32H3.336A3.34 3.34 0 0 1 0 28.664V7.271a3.34 3.34 0 0 1 3.336-3.336h3.32a1 1 0 0 1 .717.302l5.838 5.998 1.922-3.34c.357-.62 1.377-.62 1.734 0l1.922 3.34 5.838-5.998a1 1 0 0 1 .717-.302h3.32A3.34 3.34 0 0 1 32 7.27v21.393A3.34 3.34 0 0 1 28.664 32zM3.336 5.935C2.599 5.935 2 6.534 2 7.27v21.393C2 29.401 2.6 30 3.336 30h25.328c.737 0 1.336-.6 1.336-1.336V7.271c0-.737-.6-1.336-1.336-1.336h-2.898L19.3 12.579a1 1 0 0 1-1.583-.2L16 9.4l-1.715 2.98a1 1 0 0 1-1.584.2L6.234 5.935H3.336z" fill="#25a2d0" class="color000000 svgShape"></path><path d="M16 8.394a.998.998 0 0 1-.643-.234L7.738 1.766A1 1 0 0 1 8.381 0h15.238a.999.999 0 0 1 .643 1.766l-7.62 6.394a.998.998 0 0 1-.642.234zM11.128 2 16 6.088 20.872 2h-9.744z" fill="#25a2d0" class="color000000 svgShape"></path><path d="M13.418 12.881c-.268 0-.527-.108-.717-.302L5.94 5.632a1.001 1.001 0 0 1-.2-1.099L7.466.6A1 1 0 0 1 9.023.234l7.62 6.393a1 1 0 0 1 .224 1.265l-2.582 4.488a1 1 0 0 1-.867.501zM7.842 4.72l5.37 5.515 1.503-2.614-5.954-4.997-.92 2.096z" fill="#25a2d0" class="color000000 svgShape"></path><path d="M18.582 12.881a1 1 0 0 1-.867-.501l-2.582-4.488a1 1 0 0 1 .224-1.265l7.62-6.393a.998.998 0 0 1 1.558.365l1.725 3.934c.163.373.085.807-.199 1.1l-6.762 6.946c-.19.194-.449.302-.717.302zm-1.297-5.26 1.504 2.614 5.37-5.515-.92-2.096-5.954 4.997zm3.879 6.35v4.58a3.412 3.412 0 0 0 6.824 0v-4.58h-6.824z" fill="#25a2d0" class="color000000 svgShape"></path><circle cx="16" cy="13.971" r="1" fill="#25a2d0" class="color000000 svgShape"></circle><circle cx="16" cy="18.314" r="1" fill="#25a2d0" class="color000000 svgShape"></circle><circle cx="16" cy="22.657" r="1" fill="#25a2d0" class="color000000 svgShape"></circle><circle cx="16" cy="27" r="1" fill="#25a2d0" class="color000000 svgShape"></circle>
+            </svg>
+            <div style="display: flex;" class="padgetDiv"> <img src="/warning.png" class="warning" width="30" height="30" alt="">&nbsp;&nbsp;<% if(clothesdata.padget >=0 ){ %> <span class="spangreen"><%- clothesdata.padget %></span> <% }else{ %> <span class="spanred" onload="alertit()" ><%- clothesdata.padget %></span> <% } %>    </div>
+        </div>
+      </div>
+      <div class="in2">
+        <div class="menu">clothing Bills</div>
+        <div>
+          <button class="addBill btn btn-success">Add new Bill</button>
+        </div>
+      </div>
+      
+      <div class="in3">
+        <table style="border: none;">
+
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Value</th>
+              <th scope="col">Brand</th>
+              <th scope="col">Date</th>
+              <th scope="col">Photo</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            
+            <% for(var billclothes of clothesdata ){ %>
+            <tr>
+              <th scope="row"><%- billclothes.name %></th>
+              <td><%- billclothes.value %>$</td>
+              <td><%- billclothes.brand %></td>
+              <td><%- billclothes.date %></td>
+              <td><img width="50" height="50" src="/uploads/<%= billclothes.photo %>" alt=""></td>
+              <td><a class="btn btn-danger" href="/clothes/deleteClothes/<%= billclothes._id %>" >Delete</a></td>
+            </tr>
+            <% } %>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+    <script>
+      var addBill = document.getElementsByClassName("addBill")[0];
+      addBill.addEventListener("click", () => {
+        document.getElementsByClassName("tog")[0].classList.add("showw")
+        document.getElementsByClassName("tog")[0].classList.remove("hidd")
+      })
+
+
+
+      $(function () {
+        $(".x").load("addbills.ejs")[0].addEventListener("click", () => {
+          document.getElementsByClassName("tog")[0].classList.remove("showw")
+          document.getElementsByClassName("tog")[0].classList.add("hidd")
+        });
+      });
+
+    </script>
+  </body>
+
+  </html>
+
+  <%- include('parts/bottom.ejs') %>
+
+
+

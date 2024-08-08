@@ -12,13 +12,9 @@ exports.getelectpage = (req, res, next) => {
 }
 exports.addnewelectbill = (req,res,next)=>{
     billModel.addelectnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
-
         authmodel.updatePadget(req.session.userid,req.body.value).then(()=>{
-           
                 res.redirect('/elect')
-           
         })
-        
     })
 }
 
@@ -38,6 +34,7 @@ exports.getwaterpage = (req, res, next) => {
 
 
 exports.addnewwaterbill = (req,res,next)=>{
+    
     billModel.addwaternewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
         authmodel.updatePadget(req.session.userid,req.body.value).then(()=>{
             res.redirect('/water')

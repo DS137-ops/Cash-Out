@@ -7,7 +7,7 @@ localConnect = "mongodb://localhost:27017/bills"
 
 const MongoStrore = require("connect-mongodb-session")(session)
 var Store = new MongoStrore({
-    uri:globalconnect,
+    uri:localConnect,
     collection: "sessions"
 })
 
@@ -35,6 +35,7 @@ const electRoute = require('./routes/elect.route')
 const waterRoute = require('./routes/water.route')
 const phoneRoute = require('./routes/phone.route')
 const netRoute = require('./routes/net.route')
+const clothesRoute = require('./routes/clothes.route')
 const OtherRoute = require('./routes/other.route')
 const addpadgetRoute = require('./routes/addpaget.route')
 const apiRoute = require('./routes/apiRoute.route')
@@ -56,11 +57,13 @@ app.use('/elect', electRoute)
 app.use('/water', waterRoute)
 app.use('/phone', phoneRoute)
 app.use('/net', netRoute)
+app.use('/clothes', clothesRoute)
 app.use('/other', OtherRoute)
 app.use('/addelectbill', electRoute)
 app.use('/addwaterbill', waterRoute)
 app.use('/addphonebill', phoneRoute)
 app.use("/addnetbill", netRoute )
+app.use('/addclothesbill', clothesRoute)
 app.use("/addPadget", addpadgetRoute)
 app.use("/addReminder",showReminderRoute)
 app.use("/showbudgetpage",addpadgetRoute)

@@ -4,6 +4,8 @@ const router = require('express').Router()
 const GuardAuth = require('./guardAuth')
 const multer = require('multer')
 
+
+
 router.get('/', GuardAuth.isAuth, electcontroller.getelectpage)
 
 router.post('/',multer({
@@ -20,4 +22,8 @@ router.post('/',multer({
 
 router.get('/deleteElect/:id' , electcontroller.DeleteBillController)
 
+
+/*
+
+*/
 module.exports = router;
