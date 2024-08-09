@@ -5,7 +5,10 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     const billSchema = new mongoose.Schema({
         name:String,
         value:Number,
-        brand:String,
+        brand:{
+            type:String,
+            default:null
+        },
         date:String,
         photo:String,
         userid:String,
@@ -211,6 +214,29 @@ exports.addnetnewbill = (name,value,date,photo,userid) =>{
         }).then(()=>{
             mongoose.disconnect()
             resolve('added')
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+exports.addnetnewbillForApi = (name,value,date,photo,userid) =>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            let newbook = new billss({
+                    
+                name:name,
+                value:value,
+                date:date,
+                photo:photo,
+                userid:userid,
+                billtype:"net"
+            })
+            return newbook.save()
+        }).then((saved)=>{
+            mongoose.disconnect()
+            resolve(saved)
         }).catch((err)=>{
             mongoose.disconnect()
             reject(err)
