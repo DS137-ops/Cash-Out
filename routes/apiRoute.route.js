@@ -9,7 +9,8 @@ const authmodel = require('../model/auth.model')
 const billmodel = require('../model/bill.model')
 const router = require('express').Router()
 const body = require('express').urlencoded({ extended: true })
-
+const nodeSchedule = require('node-schedule');
+const nodemailer = require('nodemailer');
 router.post('/login',body, (req,res)=>{
     authmodel.userloginmodel(req.body.email, req.body.password).then((id) => {
         req.session.userid = id
@@ -63,6 +64,43 @@ router.get('/getNetbills/:id' , (req,res,next)=>{
     res.json({error:false,data4:{NetData},message:"success"})
   }).catch(()=>{
     res.json({error:true,data4:{}})
+  })
+})
+
+router.post('/addNetBill/:id',(req,res)=>{
+  billmodel.addnetnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+    res.json({error:false,message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data5:{}})
+  })
+})
+router.post('/addElectBill/:id',(req,res)=>{
+  billmodel.addelectnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+    res.json({error:false,message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data5:{}})
+  })
+})
+
+router.post('/addPhoneBill/:id',(req,res)=>{
+  billmodel.addphonenewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+    res.json({error:false,message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data5:{}})
+  })
+})
+router.post('/addWaterBill/:id',(req,res)=>{
+  billmodel.addwaternewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+    res.json({error:false,message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data5:{}})
+  })
+})
+router.post('/addClothesBill/:id',(req,res)=>{
+  billmodel.addclothesnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+    res.json({error:false,message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data5:{}})
   })
 })
 
@@ -153,5 +191,7 @@ router.post('/AddReminder/:id',body,(req,res)=>{
     res.json({error:true , err})
   })
 })
+
+
 module.exports = router;
 

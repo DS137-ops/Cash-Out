@@ -207,20 +207,7 @@ exports.getuserPadget = (id)=>{
         })
     })
 }
-exports.getEmailUser = (id)=>{
-    return new Promise((resolve, reject) => {
-        mongoose.connect(globalconnect).then(()=>{
-            return users.findById(id)
-            .then((userEmail)=>{
-                mongoose.disconnect()
-                resolve(userEmail)
-            }).catch((err)=>{
-                mongoose.disconnect()
-                reject(err)
-            })
-        })
-    })
-}
+
 exports.updatePadget = (id,val)=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{

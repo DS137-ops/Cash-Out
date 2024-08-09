@@ -18,7 +18,6 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
                     let newbook = new billss({
-                    
                         name:name,
                         value:value,
                         date:date,
@@ -130,6 +129,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     }
 
 
+    
 exports.addphonenewbill = (name,value,date,photo,userid) =>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{

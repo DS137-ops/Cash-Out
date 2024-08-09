@@ -47,6 +47,32 @@ app.post('/logout', (req, res, next) => {
         res.redirect('/login')
     })
 })
+
+/*var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'firaskingsalha67@gmail.com',
+    pass: 'cpzz lnvy ldus tczj'
+  }
+});
+
+var mailOptions = {
+  from: 'firaskingsalha67@gmail.com',
+  to: 'feadkaffoura@gmail.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+}); */
+
 app.use('/', homeroute)
 app.use('/', loginroute)
 
