@@ -67,7 +67,7 @@ router.get('/getNetbills/:id' , (req,res,next)=>{
   })
 })
 
-router.post('/addNetBill/:id',(req,res)=>{
+router.post('/addNetBill/:id',body,(req,res)=>{
   billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
