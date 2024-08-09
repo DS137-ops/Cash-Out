@@ -68,14 +68,14 @@ router.get('/getNetbills/:id' , (req,res,next)=>{
 })
 
 router.post('/addNetBill/:id',(req,res)=>{
-  billmodel.addnetnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+  billmodel.addnetnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
   })
 })
 router.post('/addElectBill/:id',(req,res)=>{
-  billmodel.addelectnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+  billmodel.addelectnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
@@ -83,21 +83,21 @@ router.post('/addElectBill/:id',(req,res)=>{
 })
 
 router.post('/addPhoneBill/:id',(req,res)=>{
-  billmodel.addphonenewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+  billmodel.addphonenewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
   })
 })
 router.post('/addWaterBill/:id',(req,res)=>{
-  billmodel.addwaternewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+  billmodel.addwaternewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
   })
 })
 router.post('/addClothesBill/:id',(req,res)=>{
-  billmodel.addclothesnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+  billmodel.addclothesnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
