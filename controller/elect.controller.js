@@ -178,3 +178,11 @@ exports.getRemindersPage = (req,res,next)=>{
         })
     })
 }
+
+
+exports.PostReminder = (req,res,next)=>{
+    authmodel.PostDataReminder(req.body.RemVal , req.body.RemDate , req.session.userid).then((RemResult)=>{
+      console.log(RemResult)
+      res.redirect('/')
+    })
+}

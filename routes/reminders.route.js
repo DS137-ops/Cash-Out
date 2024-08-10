@@ -8,6 +8,6 @@ const GuardAuth = require('../routes/guardAuth')
 const router = require('express').Router()
 
 router.get('/' , electController.getRemindersPage)
-router.post('/' , electController.getRemindersPage)
+router.post('/' ,body, electController.PostReminder)
 
 module.exports = router
