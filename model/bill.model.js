@@ -7,12 +7,12 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
         value:Number,
         brand:{
             type:String,
-            default:'https://online.fliphtml5.com/wiizk/zqva/files/large/aa8743296e3ee58c31ea5d0492d6105b.jpg?1667417394',
+            default:null,
         },
         date:String,
         photo:{
             type:String,
-            default:null
+            default:'https://online.fliphtml5.com/wiizk/zqva/files/large/aa8743296e3ee58c31ea5d0492d6105b.jpg?1667417394'
         },
         userid:String,
         billtype:{
