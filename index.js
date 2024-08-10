@@ -95,7 +95,7 @@ app.use("/addReminder",showReminderRoute)
 app.use("/showbudgetpage",addpadgetRoute)
 app.use("/showRemiders",showReminderRoute)
 app.use("/api", apiRoute)
-app.use("/apis",electRoute )
+
 app.use("/updateprofile" ,updateprofileRoute)
 app.use("/updateProfileInfo" , updateprofileRoute)
 app.use("/tips",tipsRoute)

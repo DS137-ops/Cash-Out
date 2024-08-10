@@ -10,9 +10,15 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
             default:null
         },
         date:String,
-        photo:String,
+        photo:{
+            type:String,
+            default:null
+        },
         userid:String,
-        billtype:String,
+        billtype:{
+            type:String,
+            default:null
+        },
         
     })
     var billss = mongoose.model('bills', billSchema)
@@ -93,7 +99,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     }
 
 
-    exports.addwaternewbill = (name,value,date,photo,userid)=>{
+    exports.addwaternewbill = (name,value,date,userid)=>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
                 
@@ -103,7 +109,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                     name:name,
                     value:value,
                     date:date,
-                    photo:photo,
+                    photo:null,
                     userid:userid,
                     billtype:"water"
                 })
@@ -220,11 +226,11 @@ exports.addnetnewbill = (name,value,date,photo,userid) =>{
         })
     })
 }
-
 exports.addnetnewbillForApi = (name,value,date,photo,userid) =>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{
-            let newbook = new billss({  
+            let newbook = new billss({
+                    
                 name:name,
                 value:value,
                 date:date,
@@ -233,15 +239,17 @@ exports.addnetnewbillForApi = (name,value,date,photo,userid) =>{
                 billtype:"net"
             })
             return newbook.save()
-        }).then((savedd)=>{
+        }).then(()=>{
             mongoose.disconnect()
-            resolve(savedd)
+            console.log(22)
+            resolve('added')
         }).catch((err)=>{
             mongoose.disconnect()
-            reject("erooooor")
+            reject(err)
         })
     })
 }
+
 
 
 exports.getnetsdata = (id)=>{
@@ -419,3 +427,6 @@ exports.deleteNetBillForApi = (NetId)=>{
         })
     })
 }
+
+
+
