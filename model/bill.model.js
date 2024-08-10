@@ -428,5 +428,3 @@ exports.deleteNetBillForApi = (NetId)=>{
     })
 }
 
-
-

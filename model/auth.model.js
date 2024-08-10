@@ -23,7 +23,7 @@ var newSchema = mongoose.Schema({
     city: String,
     padget: {
         type: Number,
-        default:null,
+        default:0,
        
       },
       FinalDatePadget: {
@@ -306,9 +306,38 @@ exports.getRemindersForApi = (id)=>{
         })
     })
 }
+const nodemailer = require('nodemailer');
+const cron = require('node-cron');
 
-exports.getRems = ()=>{
-    for(let i=0;i<10;i++){
-        console.log(i)
-    }
+exports.SendReminderss = (vals,dates,Email)=>{
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'firaskingsalha67@gmail.com',
+          pass: 'cpzz lnvy ldus tczj'  
+      
+        }
+      });
+      const mailOptions = {
+        from: 'firaskingsalha67@gmail.com',  
+      
+        to: Email,
+        subject: vals,
+        text: 'This email was sent at the scheduled time.'
+      };
+      const dd=(new Date(new Date().getTime() +  60 * 1000))
+      const [day, month, year] = dates.split('-');
+      console.log( day)
+      console.log( month)
+      console.log( year)
+      // Schedule the email to be sent on a specific date (replace with your desired date)
+       cron.schedule(`00 07 ${year} ${month} *`, () => {
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.error(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
+        });
 }

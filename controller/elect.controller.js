@@ -182,7 +182,15 @@ exports.getRemindersPage = (req,res,next)=>{
 
 exports.PostReminder = (req,res,next)=>{
     authmodel.PostDataReminder(req.body.RemVal , req.body.RemDate , req.session.userid).then((RemResult)=>{
-        console.log(req.session.userid)
-      res.redirect('/')
+        authmodel.getuserPadget(req.session.userid).then((usremail)=>{
+            authmodel.SendReminderss(req.body.RemVal,req.body.RemDate,usremail.email)
+                res.redirect('/')
+          
+               
+            
+        
+        })
+       
+      
     })
 }
