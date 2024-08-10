@@ -7,7 +7,7 @@ localConnect = "mongodb://localhost:27017/bills"
 
 const MongoStrore = require("connect-mongodb-session")(session)
 var Store = new MongoStrore({
-    uri:globalconnect,
+    uri:localConnect,
     collection: "sessions"
 })
 
@@ -95,6 +95,7 @@ app.use("/addReminder",showReminderRoute)
 app.use("/showbudgetpage",addpadgetRoute)
 app.use("/showRemiders",showReminderRoute)
 app.use("/api", apiRoute)
+app.use("/apis",electRoute )
 app.use("/updateprofile" ,updateprofileRoute)
 app.use("/updateProfileInfo" , updateprofileRoute)
 app.use("/tips",tipsRoute)

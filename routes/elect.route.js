@@ -1,8 +1,9 @@
 const electcontroller = require('../controller/elect.controller')
-
+const billmodel = require('../model/bill.model')
 const router = require('express').Router()
 const GuardAuth = require('./guardAuth')
 const multer = require('multer')
+const body = require('express').urlencoded({ extended: true })
 
 
 
@@ -21,7 +22,6 @@ router.post('/',multer({
 
 
 router.get('/deleteElect/:id' , electcontroller.DeleteBillController)
-
 
 /*
 

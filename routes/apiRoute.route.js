@@ -50,6 +50,24 @@ router.get('/getwaterbills/:id' , (req,res,next)=>{
     res.json({error:true,data2:{}})
   })
 })
+router.post('/addNetBill/:id/:photo',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+  billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.params.photo,req.session.userid).then(()=>{
+    res.json({error:false,message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data5:{}})
+  })
+})
 
 router.get('/getphonebills/:id' , (req,res,next)=>{
   billmodel.getphonesdataForApi(req.params.id).then((NetData)=>{
@@ -67,37 +85,74 @@ router.get('/getNetbills/:id' , (req,res,next)=>{
   })
 })
 
-router.post('/addNetBill/:id',body,(req,res)=>{
-  billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
-    res.json({error:false,message:"success"})
-  }).catch(()=>{
-    res.json({error:true,data5:{}})
-  })
-})
-router.post('/addElectBill/:id',(req,res)=>{
-  billmodel.addelectnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
-    res.json({error:false,message:"success"})
-  }).catch(()=>{
-    res.json({error:true,data5:{}})
-  })
-})
 
-router.post('/addPhoneBill/:id',(req,res)=>{
-  billmodel.addphonenewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
+router.post('/addElectBill/:id/:photo',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+  billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.params.photo,req.session.userid).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
   })
 })
-router.post('/addWaterBill/:id',(req,res)=>{
-  billmodel.addwaternewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
+router.post('/addPhoneBill/:id/:photo',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+  billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.params.photo,req.session.userid).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
   })
 })
-router.post('/addClothesBill/:id',(req,res)=>{
-  billmodel.addclothesnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then(()=>{
+router.post('/addWaterBill/:id/:photo',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+  billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.params.photo,req.session.userid).then(()=>{
+    res.json({error:false,message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data5:{}})
+  })
+})
+router.post('/addClothesBill/:id/:photo',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+  billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.params.photo,req.session.userid).then(()=>{
     res.json({error:false,message:"success"})
   }).catch(()=>{
     res.json({error:true,data5:{}})
