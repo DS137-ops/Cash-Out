@@ -170,10 +170,75 @@ router.post('/addNetBill/:id',body,multer({
       }
   })
 }).single(["photo"]),(req,res)=>{
-   billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,'https://drive.google.com/thumbnail?id=1By-TiWOwAE38bvVPjcZ4uYzq83ZDgrDz',req.params.id).then(()=>{
+   billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,null,req.params.id).then(()=>{
+    res.json({error:false,message:'success'})
+   })
+})
+router.post('/addElectBill/:id',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+   billmodel.addelectnewbill(req.body.name,req.body.value,req.body.date,'https://drive.google.com/thumbnail?id=1By-TiWOwAE38bvVPjcZ4uYzq83ZDgrDz',req.params.id).then(()=>{
+    res.json({error:false,message:'success'})
+   })
+})
+router.post('/addWaterBill/:id',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+   billmodel.addwaternewbill(req.body.name,req.body.value,req.body.date,'https://drive.google.com/thumbnail?id=1By-TiWOwAE38bvVPjcZ4uYzq83ZDgrDz',req.params.id).then(()=>{
     res.json({error:false,message:'success'})
    })
 })
 
+router.post('/addClothesBill/:id',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+   billmodel.addclothesnewbill(req.body.name,req.body.value,req.body.date,'https://drive.google.com/thumbnail?id=1By-TiWOwAE38bvVPjcZ4uYzq83ZDgrDz',req.params.id).then(()=>{
+    res.json({error:false,message:'success'})
+   })
+})
+
+router.post('/addPhoneBill/:id',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+   billmodel.addphonenewbill(req.body.name,req.body.value,req.body.date,'https://drive.google.com/thumbnail?id=1By-TiWOwAE38bvVPjcZ4uYzq83ZDgrDz',req.params.id).then(()=>{
+    res.json({error:false,message:'success'})
+   })
+})
 module.exports = router;
 
