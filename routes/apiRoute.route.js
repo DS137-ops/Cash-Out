@@ -171,7 +171,7 @@ router.post('/addNetBill/:id',body,multer({
       }
   })
 }).single(["photo"]),(req,res)=>{
-  billmodel.addnetnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then((rr)=>{
+  billmodel.addnetnewbill(req.body.name,req.body.value,req.body.date,'',req.params.id).then((rr)=>{
     res.json({error:false  , message:'success'})
   }).catch((err)=>{
     res.json({error:true  , message:'not success'})
