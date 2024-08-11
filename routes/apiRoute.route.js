@@ -159,9 +159,19 @@ router.post('/AddReminder/:id',body,(req,res)=>{
 })
 
 
-router.post('/addNetBill/:id',body,(req,res)=>{
-  billmodel.addnetnewbill('fayad',12,'1281289','',req.params.id).then((rr)=>{
-    console.log(rr)
+router.post('/addNetBill/:id',body,multer({
+  storage : multer.diskStorage({
+      destination:function(req,file,cb){
+          cb(null,'assets/uploads')
+      },
+      filename:function(req,file,cb){
+          console.log(file.originalname)
+          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+          /*null,Date.now()+'.'+file.originalname*/
+      }
+  })
+}).single(["photo"]),(req,res)=>{
+  billmodel.addnetnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.params.id).then((rr)=>{
     res.json({error:false  , message:'success'})
   }).catch((err)=>{
     res.json({error:true  , message:'not success'})

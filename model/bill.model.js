@@ -209,7 +209,7 @@ exports.addnetnewbill = (name,value,date,photo,userid) =>{
         mongoose.connect(globalconnect).then(()=>{
             let newbook = new billss({
                     
-                name:name,
+                name:"",
                 value:value,
                 date:date,
                 photo:photo,
