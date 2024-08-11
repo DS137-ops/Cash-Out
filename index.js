@@ -42,6 +42,7 @@ const apiRoute = require('./routes/apiRoute.route')
 const updateprofileRoute = require('./routes/updateprofile.route')
 const tipsRoute = require('./routes/tips.route')
 const showReminderRoute = require('./routes/reminders.route')
+const minningRoute = require('./routes/minning.route')
 app.post('/logout', (req, res, next) => {
     req.session.destroy(() => {
         res.redirect('/login')
@@ -95,10 +96,10 @@ app.use("/addReminder",showReminderRoute)
 app.use("/showbudgetpage",addpadgetRoute)
 app.use("/showRemiders",showReminderRoute)
 app.use("/api", apiRoute)
-
 app.use("/updateprofile" ,updateprofileRoute)
 app.use("/updateProfileInfo" , updateprofileRoute)
 app.use("/tips",tipsRoute)
+//app.use("/minning",minningRoute)
 app.listen(7000, () => {
     console.log('server is running')
 })

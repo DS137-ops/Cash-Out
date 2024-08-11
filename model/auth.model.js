@@ -322,8 +322,9 @@ exports.SendReminderss = (vals,dates,Email)=>{
         from: 'firaskingsalha67@gmail.com',  
       
         to: Email,
-        subject: vals,
-        text: 'This email was sent at the scheduled time.'
+        subject: 'Cash Out Reminders',
+        text: 'Reminder details: ' + vals + `\n`+
+        'At : ' + dates,
       };
       const dd=(new Date(new Date().getTime() +  60 * 1000))
       const [day, month, year] = dates.split('-');

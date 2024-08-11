@@ -13,7 +13,7 @@ function sendEmail(email,pudget) {
         from: 'firaskingsalha67@gmail.com',
         to: email,
         subject: 'Attention please!',
-        text: 'your pudget has reached to'+pudget
+        text: 'your pudget has reached to  ' +  '( ' + pudget + ' )'
       };
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {

@@ -158,21 +158,12 @@ router.post('/AddReminder/:id',body,(req,res)=>{
   })
 })
 
-router.post('/addNetBill/:id',body,multer({
-  storage : multer.diskStorage({
-      destination:function(req,file,cb){
-          cb(null,'assets/uploads')
-      },
-      filename:function(req,file,cb){
-          console.log(file.originalname)
-          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-          /*null,Date.now()+'.'+file.originalname*/
-      }
+
+router.post('/addNetBill/:id',body,(req,res)=>{
+  billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,null,req.params.id).then((rr)=>{
+    console.log(rr)
+    res.json({error:false  , message:'success'})
   })
-}).single(["photo"]),(req,res)=>{
-   billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,null,req.params.id).then(()=>{
-    res.json({error:false,message:'success'})
-   })
 })
 router.post('/addElectBill/:id',body,multer({
   storage : multer.diskStorage({
