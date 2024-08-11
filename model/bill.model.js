@@ -30,6 +30,30 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                         name:name,
                         value:value,
                         date:date,
+                        photo:'https://graduate-final.onrender.com/files/billImages/uploads/'+photo,
+                        userid:userid,
+                        billtype:"elect"
+                    })
+                    return newbook.save()
+                
+            }).then((newbilll)=>{
+                
+                mongoose.disconnect()
+                resolve(newbilll)
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
+        })
+    }
+
+    exports.addelectnewbillForApi = (name,value,date,photo,userid) =>{
+        return new Promise((resolve, reject) => {
+            mongoose.connect(globalconnect).then(()=>{
+                    let newbook = new billss({
+                        name:name,
+                        value:value,
+                        date:date,
                         photo:photo,
                         userid:userid,
                         billtype:"elect"
@@ -83,7 +107,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                     value:value,
                     brand:brand,
                     date:date,
-                    photo:photo,
+                    photo:'https://graduate-final.onrender.com/files/billImages/uploads/'+photo,
                     userid:userid,
                     billtype:"clothes"
                 })
@@ -98,8 +122,32 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
         })
     }
 
-
-    exports.addwaternewbill = (name,value,date,userid)=>{
+    exports.addclothesnewbillForApi = (name,value,brand,date,photo,userid)=>{
+        return new Promise((resolve, reject) => {
+            mongoose.connect(globalconnect).then(()=>{
+                
+            }).then(()=>{
+                let newbook = new billss({
+                    
+                    name:name,
+                    value:value,
+                    brand:brand,
+                    date:date,
+                    photo:photo,
+                    userid:userid,
+                    billtype:"clothes"
+                })
+                return newbook.save()
+            }).then(()=>{
+                mongoose.disconnect()
+                resolve('added')
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
+        })
+    }
+    exports.addwaternewbill = (name,value,date,photo,userid)=>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
                 
@@ -109,7 +157,32 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                     name:name,
                     value:value,
                     date:date,
-                    photo:null,
+                    photo:'https://graduate-final.onrender.com/files/billImages/uploads/'+photo,
+                    userid:userid,
+                    billtype:"water"
+                })
+                return newbook.save()
+            }).then(()=>{
+                mongoose.disconnect()
+                resolve('added')
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
+        })
+    }
+
+    exports.addwaternewbillForApi = (name,value,date,photo,userid)=>{
+        return new Promise((resolve, reject) => {
+            mongoose.connect(globalconnect).then(()=>{
+                
+            }).then(()=>{
+                let newbook = new billss({
+                    
+                    name:name,
+                    value:value,
+                    date:date,
+                    photo:photo,
                     userid:userid,
                     billtype:"water"
                 })
@@ -147,11 +220,34 @@ exports.addphonenewbill = (name,value,date,photo,userid) =>{
                 name:name,
                 value:value,
                 date:date,
-                photo:photo,
+                photo:'https://graduate-final.onrender.com/files/billImages/uploads/'+photo,
                 userid:userid,
                 billtype:"phone"
             })
             return newbook.save()
+        }).then(()=>{
+            mongoose.disconnect()
+            resolve('added')
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+exports.addphonenewbillForApi = (name,value,date,photo,userid) =>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            let newbill = new billss({
+                    
+                name:name,
+                value:value,
+                date:date,
+                photo:photo,
+                userid:userid,
+                billtype:"phone"
+            })
+            return newbill.save()
         }).then(()=>{
             mongoose.disconnect()
             resolve('added')
@@ -182,6 +278,29 @@ exports.getOthersdataForApi = (id)=>{
         }).then((bills)=>{
             mongoose.disconnect()
             resolve(bills)
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+exports.addOtherBill = (name,value,date,photo,userid)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            let newbill = new billss({
+                    
+                name:name,
+                value:value,
+                date:date,
+                photo:photo,
+                userid:userid,
+                billtype:"other"
+            })
+            return newbill.save()
+        }).then(()=>{
+            mongoose.disconnect()
+            resolve('added')
         }).catch((err)=>{
             mongoose.disconnect()
             reject(err)
@@ -241,7 +360,6 @@ exports.addnetnewbillForApi = (name,value,date,photo,userid) =>{
             return newbook.save()
         }).then(()=>{
             mongoose.disconnect()
-            console.log(22)
             resolve('added')
         }).catch((err)=>{
             mongoose.disconnect()
@@ -409,6 +527,17 @@ exports.deleteNetBill = (NetId)=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{
            return billss.deleteOne({_id:NetId})
+        }).then((resNet)=>{
+            resolve(true)
+        }).catch((err)=>{
+            reject(err)
+        })
+    })
+}
+exports.deleteOtherBill = (OtherId)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+           return billss.deleteOne({_id:OtherId})
         }).then((resNet)=>{
             resolve(true)
         }).catch((err)=>{

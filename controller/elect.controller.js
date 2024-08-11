@@ -131,11 +131,26 @@ exports.getnetpage = (req,res,next)=>{
 
 exports.getOtherPage = (req,res,next) =>{
     authmodel.gethomedata(req.session.userid).then((userdata)=>{
-        authmodel.getuserPadget(req.session.userid).then((otherPadget)=>{
-            res.render('other',{otherPadget:otherPadget,userdata:userdata,verifuser:req.session.userid})
-
+        billModel.getOthersdataForApi(req.session.userid).then((othersData)=>{
+            authmodel.getuserPadget(req.session.userid).then((otherPadget)=>{
+                res.render('other',{otherPadget:otherPadget,userdata:userdata,verifuser:req.session.userid,othersData:othersData})
+            })
         })
+       
     })
+}
+exports.postOtherBill = (req,res,next) =>{
+   billModel.addOtherBill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+    authmodel.updatePadget(req.session.userid,req.body.value).then(()=>{
+        authmodel.getuserPadget(req.session.userid).then((usrbud)=>{
+            if(usrbud.padget<=0){
+                sendEmail(usrbud.email,usrbud.padget)
+            }
+            res.redirect('/other')
+        })
+        
+    })
+   })
 }
 exports.getTipsPage = (req,res,next)=>{
 authmodel.gethomedata(req.session.userid).then((userdata)=>{
@@ -167,6 +182,12 @@ exports.DeleteNetBillController = (req,res,next)=>{
     let NetId = req.params.id
     billModel.deleteNetBill(NetId).then((DeleteRes)=>{
           res.redirect('/net')
+    })
+}
+exports.DeleteOtherBillController = (req,res,next)=>{
+    let OtherId = req.params.id
+    billModel.deleteOtherBill(OtherId).then((DeleteRes)=>{
+          res.redirect('/other')
     })
 }
 
