@@ -160,7 +160,7 @@ router.post('/AddReminder/:id',body,(req,res)=>{
 
 
 router.post('/addNetBill/:id',body,(req,res)=>{
-  billmodel.addnetnewbill(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
+  billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
     res.json({error:false  , message:'success'})
   }).catch((err)=>{
     res.json({error:true  , message:'not success'})
