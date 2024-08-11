@@ -163,6 +163,8 @@ router.post('/addNetBill/:id',body,(req,res)=>{
   billmodel.addnetnewbill('fayad',12,'1281289','',req.params.id).then((rr)=>{
     console.log(rr)
     res.json({error:false  , message:'success'})
+  }).catch((err)=>{
+    res.json({error:true  , message:'not success'})
   })
 })
 router.post('/addElectBill/:id',body,multer({
