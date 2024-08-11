@@ -21,7 +21,7 @@ app.use(session({
 const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'assests')));
-app.use(express.static('/files/billImages',path.join(__dirname, 'assets')));
+app.use('/files/billImages',express.static(path.join(__dirname, 'assets')));
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 const flash = require('connect-flash')
