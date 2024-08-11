@@ -367,7 +367,7 @@ font-size: 22px;
               <th scope="row"><%- netbill.name %></th>
               <td><%- netbill.value %></td>
               <td><%- netbill.date %></td>
-              <td><img width="50" height="50" src="/uploads/<%= netbill.photo %>" alt=""></td>
+              <td><img width="50" height="50" src="<%= netbill.photo %>" alt=""></td>
               <td><a class="btn btn-danger" href="/net/deleteNet/<%= netbill._id %>" >Delete</a></td>
             </tr>
             <% } %>
