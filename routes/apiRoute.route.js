@@ -161,7 +161,7 @@ router.post('/AddReminder/:id',body,(req,res)=>{
 
 router.post('/addNetBill/:id',body,(req,res)=>{
   billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
-    authmodel.updatePadget(req.session.userid,req.body.value).then(()=>{
+    authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
       res.json({error:false  , message:'success'})
     })
   }).catch((err)=>{
