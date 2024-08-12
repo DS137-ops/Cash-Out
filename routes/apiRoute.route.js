@@ -198,7 +198,13 @@ router.post('/addNetBill/:id',body,(req,res)=>{
 router.post('/addElectBill/:id',body,(req,res)=>{
   billmodel.addelectnewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
     authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
+      authmodel.getuserPadget(req.params.id).then((usrbud)=>{
+        if(usrbud.padget<=0){
+          sendEmail(usrbud.email,usrbud.padget)
+      }
       res.json({error:false  , message:'success'})
+      })
+     
     })
   }).catch((err)=>{
     res.json({error:true  , message:'not success'})
@@ -206,14 +212,30 @@ router.post('/addElectBill/:id',body,(req,res)=>{
 })
 router.post('/addWaterBill/:id',body,(req,res)=>{
   billmodel.addwaternewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
-    res.json({error:false  , message:'success'})
+    authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
+      authmodel.getuserPadget(req.params.id).then((usrbud)=>{
+        if(usrbud.padget<=0){
+          sendEmail(usrbud.email,usrbud.padget)
+      }
+      res.json({error:false  , message:'success'})
+      })
+    })
+    
   }).catch((err)=>{
     res.json({error:true  , message:'not success'})
   })
 })
 router.post('/addClothesBill/:id',body,(req,res)=>{
   billmodel.addclothesnewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
-    res.json({error:false  , message:'success'})
+    authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
+      authmodel.getuserPadget(req.params.id).then((usrbud)=>{
+        if(usrbud.padget<=0){
+          sendEmail(usrbud.email,usrbud.padget)
+      }
+      res.json({error:false  , message:'success'})
+
+      })
+    })
   }).catch((err)=>{
     res.json({error:true  , message:'not success'})
   })
@@ -221,7 +243,15 @@ router.post('/addClothesBill/:id',body,(req,res)=>{
 
 router.post('/addPhoneBill/:id',body,(req,res)=>{
   billmodel.addphonenewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
-    res.json({error:false  , message:'success'})
+    authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
+      authmodel.getuserPadget(req.params.id).then((usrbud)=>{
+        if(usrbud.padget<=0){
+          sendEmail(usrbud.email,usrbud.padget)
+      }
+      res.json({error:false  , message:'success'})
+      })
+    })
+    
   }).catch((err)=>{
     res.json({error:true  , message:'not success'})
   })
