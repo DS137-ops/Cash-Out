@@ -48,6 +48,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     }
 
     exports.addelectnewbillForApi = (name,value,date,photo,userid) =>{
+        console.log(photo)
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
                     let newbook = new billss({
