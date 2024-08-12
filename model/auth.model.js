@@ -208,6 +208,20 @@ exports.getuserPadget = (id)=>{
         })
     })
 }
+exports.getuserPadgetForApi = (id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            return users.findById(id)
+            .then((userpadg)=>{
+                mongoose.disconnect()
+                resolve(userpadg)
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
+        })
+    })
+}
 
 exports.updatePadget = (id,val)=>{
     return new Promise((resolve, reject) => {
