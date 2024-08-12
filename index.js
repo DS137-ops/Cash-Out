@@ -42,38 +42,12 @@ const apiRoute = require('./routes/apiRoute.route')
 const updateprofileRoute = require('./routes/updateprofile.route')
 const tipsRoute = require('./routes/tips.route')
 const showReminderRoute = require('./routes/reminders.route')
-const minningRoute = require('./routes/minning.route')
+const specialUserLogin = require('./routes/minning.route')
 app.post('/logout', (req, res, next) => {
     req.session.destroy(() => {
         res.redirect('/login')
     })
 })
-
-/*var nodemailer = require('nodemailer');
-
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'firaskingsalha67@gmail.com',
-    pass: 'cpzz lnvy ldus tczj'
-  }
-});
-
-var mailOptions = {
-  from: 'firaskingsalha67@gmail.com',
-  to: 'feadkaffoura@gmail.com',
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-}); */
-
 app.use('/', homeroute)
 app.use('/', loginroute)
 
@@ -100,6 +74,8 @@ app.use("/api", apiRoute)
 app.use("/updateprofile" ,updateprofileRoute)
 app.use("/updateProfileInfo" , updateprofileRoute)
 app.use("/tips",tipsRoute)
+app.use("/loginMinning",specialUserLogin)
+app.use("/showminn",specialUserLogin)
 //app.use("/minning",minningRoute)
 app.listen(7000, () => {
     console.log('server is running')

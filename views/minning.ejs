@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body{
+    margin: 0;
+    box-sizing: border-box;
+    background-color: burlywood;
+}
+
+
+.grid{
+    display: grid;
+    margin: 10px;
+    padding: 10px;
+    grid-auto-rows: minmax(100px,auto);
+    grid-template-rows: repeat(7,75px);
+    grid-gap: 20px;
+    grid-template-areas:
+    ". . button button . ."
+    ". . raid raid . ."
+    ". . raid raid . ."
+    ". . raid raid . ."
+    ". . three three three ."
+    ". . three three three ."
+    ". . three three three ."
+    ;
+}
+
+.button{
+    grid-area: button;
+    height: 45px;
+    background-color: #757564;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+.raid{
+    grid-area: raid;
+    background-color: #757564;
+    
+}
+
+.three{
+    grid-area: three;
+    background-color: #757564;
+    display: grid;
+    padding: 10px;
+    grid-auto-rows: minmax(100px,auto);
+    grid-template-rows: repeat(3,70px);
+    grid-gap: 10px;
+    grid-template-areas:
+    "div1 div1 div1"
+    "div2 div2 div2"
+    ". button2 ."
+    ;
+}
+
+.div1{
+    grid-area: div1;
+}
+.div2{
+    grid-area: div2;
+}
+
+.button2{
+    grid-area: button2;
+    height: 45px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.text{
+    width: 66%;
+    height: 40%;
+    border-radius: 5px;
+}
+
+
+:root {
+
+    --input-color: #99A3BA;
+    --input-border: #CDD9ED;
+    --input-background: #fff;
+    --input-placeholder: #CBD1DC;
+    
+    --input-border-focus: #275EFE;
+    
+    --group-color: var(--input-color);
+    --group-border: var(--input-border);
+    --group-background: #EEF4FF;
+    
+    --group-color-focus: #fff;
+    --group-border-focus: var(--input-border-focus);
+    --group-background-focus: #678EFE;
+    
+    }
+    
+    .form-field {
+    display: block;
+    width: 90%;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    color: var(--input-color);
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
+    transition: border .3s ease;
+    &::placeholder {
+        color: var(--input-placeholder);
+    }
+    &:focus {
+        outline: none;
+        border-color: var(--input-border-focus);
+    }
+    
+    }
+    
+    .form-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+    & > span,
+    .form-field {
+        white-space: nowrap;
+        display: block;
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+        &:first-child {
+            border-radius: 6px 0 0 6px;
+        }
+        &:last-child {
+            border-radius: 0 6px 6px 0;
+        }
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+    }
+    .form-field {
+        position: relative;
+        z-index: 1;
+        flex: 1 1 auto;
+        width: 1%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    & > span {
+        text-align: center;
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 25px;
+        color: var(--group-color);
+        background: var(--group-background);
+        border: 1px solid var(--group-border);
+        transition: background .3s ease, border .3s ease, color .3s ease;
+    }
+    &:focus-within {
+        & > span {
+            color: var(--group-color-focus);
+            background: var(--group-background-focus);
+            border-color: var(--group-border-focus);
+        }
+    }
+    }
+    label{
+        font-size: 25px;
+    }
+    .raid{
+        padding-top: 10px;
+    }
+    </style>
+</head>
+<body>
+
+        <form action="" class="form">
+
+    <div class="grid">
+            <button class="button">bb11</button>
+
+            <div class="raid">
+
+                <input type="checkbox" id="all" name="fav" value="All"  class="checkbox">
+                <label id="all2">All</label><br>
+
+            <input type="checkbox" id="elc" name="fav" value="Electricty" class="checkbox">
+            <label>Electricty</label><br>
+
+            <input type="checkbox" id="water" name="fav" value="Water"   class="checkbox">
+            <label>Water</label><br>
+
+            <input type="checkbox" id="phone" name="fav" value="phone"  class="checkbox">
+            <label>Phone</label><br>
+
+            <input type="checkbox" id="net" name="fav" value="Net"  class="checkbox">
+            <label>Net</label><br>
+
+            <input type="checkbox" id="food" name="fav" value="Food"  class="checkbox">
+            <label>Food</label><br>
+
+            <input type="checkbox" id="clothes" name="fav" value="Clothes"  class="checkbox">
+            <label>Clothes</label><br>
+
+            <input type="checkbox" id="other" name="fav" value="Other"  class="checkbox">
+            <label>Other..</label><br>
+        </div>
+
+            <div class="three">
+            
+            <div class="div1">
+            <label class="sel1" >Select:</label>
+            <select name="cities" id="cities" class="cities">
+            <option value="select"  name="option1" >Select</option>
+            <option value="Hama"  name="option2">Hama</option>
+            <option value="Aleppo" name="option3">Aleppo</option>
+            <option value="Damascus" name="option4">Damascus</option>
+            <option value="Latakia" name="option5">Latakia</option>
+            <option value="Homs" name="option6">Homs</option>
+            <option value="Al-Hasakah" name="option7">Al-Hasakah</option>
+            <option value="Daraa" name="option8">Daraa</option>
+            <option value="Deir ez-Zor" name="option9">Deir ez-Zor</option>
+            <option value="Idlib" name="option10">Idlib</option>
+            <option value="As-Suwayda" name="option11">As-Suwayda</option>
+            <option value="Tartus" name="option12">Tartus</option>
+            <option value="Quneitra" name="option13">Quneitra</option>
+            <option value="Ar-Raqqah" name="option14">Ar-Raqqah</option>
+            
+        </select>
+    </div>
+
+        <div class="div2">
+        <label class="add" >Address:</label>
+        <input class="form-field" type="text" name="">
+            </div>
+
+        <button class="button2">Search</button>
+
+    </div>
+
+
+
+    </div>
+    </form>
+    <script>
+       const selectAllCheckbox = document.getElementById('all');
+const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#all)');
+
+selectAllCheckbox.addEventListener('change', (event) => {
+  const isChecked = event.target.checked;
+  
+  checkboxes.forEach(checkbox => {
+    checkbox.checked = isChecked;
+  });
+});
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', () => {
+    selectAllCheckbox.checked = Array.from(checkboxes).every(cb => cb.checked);
+  });
+});
+
+const checkboxes2 = document.querySelectorAll('.checkbox');
+
+checkboxes2.forEach(checkbox => {
+   
+  checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+        checkbox.name = 'active';
+        console.log(checkbox.name)
+    } else {
+        checkbox.name = checkbox.name.replace(' active', 'fav');
+    }
+  });
+  
+});
+const selectElement = document.getElementsByClassName('cities')[0];
+
+selectElement.addEventListener('change', () => {
+  const selectedOption = selectElement.options[selectElement.selectedIndex];
+  selectedOption.setAttribute("name", "selecting")
+  console.log(selectedOption)
+  // Remove "selecting" from other options
+  for (let i = 0; i < selectElement.options.length; i++) {
+    if (i !== selectElement.selectedIndex) {
+      selectElement.options[i].name = selectElement.options[i].setAttribute("name","")
+    }
+  }
+  console.log(selectedOption)
+});
+    </script>
+</body>
+</html>

@@ -22,6 +22,10 @@ var newSchema = mongoose.Schema({
         minlength : [6,'Password must be more than 6 chars']
     },
     city: String,
+    address:{
+        type:String,
+        required:true
+    },
     padget: {
         type: Number,
         default:0,
@@ -41,7 +45,7 @@ var newSchema = mongoose.Schema({
       }]
 })
 var users = mongoose.model('users', newSchema)
-exports.postdatamodel = (name, email, password, city) => {
+exports.postdatamodel = (name, email, password, address , city) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(() => {
             return users.findOne({ email: email })
@@ -57,6 +61,7 @@ exports.postdatamodel = (name, email, password, city) => {
                 name: name,
                 email: email,
                 password: hpass,
+                address:address,
                 city: city,
                 padget:null
             })
@@ -72,7 +77,7 @@ exports.postdatamodel = (name, email, password, city) => {
     })
 }
 
-exports.postdatamodelforapi = (name, email, password, city) => {
+exports.postdatamodelforapi = (name, email, password,address, city) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(() => {
             return users.findOne({ email: email })
@@ -88,6 +93,7 @@ exports.postdatamodelforapi = (name, email, password, city) => {
                 name: name,
                 email: email,
                 password: hpass,
+                address:address,
                 city: city,
                 padget:null
             })
@@ -124,7 +130,9 @@ exports.userloginmodel = (email, password) => {
                 mongoose.disconnect()
                 reject("Invalid Email")}
         }).catch((err) => {
-            reject(err)})})}
+            reject(err)})
+        })
+    }
 
             exports.userloginmodelforapi = (email, password) => {
                 return new Promise((resolve, reject) => {

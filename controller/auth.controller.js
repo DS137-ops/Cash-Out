@@ -7,7 +7,7 @@ exports.ShowLoginPage = (req, res, next) => {
 }
 
 exports.postuserdata = (req, res, next) => {
-      authmodel.postdatamodel(req.body.name, req.body.email, req.body.password, req.body.city).then(() => {
+      authmodel.postdatamodel(req.body.name, req.body.email, req.body.password,req.body.address, req.body.city).then(() => {
             res.redirect('/')
       }).catch((err) => {
             handleErrors(err)
