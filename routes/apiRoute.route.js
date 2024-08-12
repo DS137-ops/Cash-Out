@@ -9,8 +9,29 @@ const authmodel = require('../model/auth.model')
 const billmodel = require('../model/bill.model')
 const router = require('express').Router()
 const body = require('express').urlencoded({ extended: true })
-const nodeSchedule = require('node-schedule');
-const nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
+function sendEmail(email,pudget) {
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'firaskingsalha67@gmail.com',
+          pass: 'cpzz lnvy ldus tczj'
+        }
+      });
+      var mailOptions = {
+        from: 'firaskingsalha67@gmail.com',
+        to: email,
+        subject: 'Attention please!',
+        text: 'your pudget has reached to  ' +  '( ' + pudget + ' )'
+      };
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      }); 
+}
 router.post('/login',body, (req,res)=>{
     authmodel.userloginmodel(req.body.email, req.body.password).then((id) => {
         req.session.userid = id
@@ -162,6 +183,12 @@ router.post('/AddReminder/:id',body,(req,res)=>{
 router.post('/addNetBill/:id',body,(req,res)=>{
   billmodel.addnetnewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
     authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
+      authmodel.getuserPadget(req.params.id).then((usrbud)=>{
+        if(usrbud.padget<=0){
+          sendEmail(usrbud.email,usrbud.padget)
+      }
+      res.redirect('/net')
+      })
       res.json({error:false  , message:'success'})
     })
   }).catch((err)=>{
