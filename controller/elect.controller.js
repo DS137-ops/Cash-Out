@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const authmodel = require('../model/auth.model')
 const billModel = require('../model/bill.model')
 var nodemailer = require('nodemailer');
@@ -128,7 +129,27 @@ exports.getnetpage = (req,res,next)=>{
         })
     })
 }
-
+exports.getfoodpage = (req,res,next)=>{
+    authmodel.gethomedata(req.session.userid).then((userdata)=>{
+        billModel.getfoodsdata(req.session.userid).then((fooddata)=>{
+            authmodel.getuserPadget(req.session.userid).then((foodPadget)=>{
+                res.render('food',{foodPadget:foodPadget,userdata:userdata,verifuser:req.session.userid , fooddata:fooddata })
+            })
+        })
+    })
+}
+exports.addnewfoodbill = (req,res,next)=>{
+   billModel.addfoodnewbill(req.body.name,req.body.value,req.body.date,req.file.filename,req.session.userid).then(()=>{
+    authmodel.updatePadget(req.session.userid,req.body.value).then(()=>{
+        authmodel.getuserPadget(req.session.userid).then((usrbud)=>{
+            if(usrbud.padget<=0){
+                sendEmail(usrbud.email,usrbud.padget)
+            }
+            res.redirect('/food')
+        })
+    })
+   })
+}
 exports.getOtherPage = (req,res,next) =>{
     authmodel.gethomedata(req.session.userid).then((userdata)=>{
         billModel.getOthersdataForApi(req.session.userid).then((othersData)=>{
@@ -182,6 +203,13 @@ exports.DeleteNetBillController = (req,res,next)=>{
     let NetId = req.params.id
     billModel.deleteNetBill(NetId).then((DeleteRes)=>{
           res.redirect('/net')
+    })
+}
+
+exports.DeleteFoodBillController = (req,res,next)=>{
+    let FoodId = req.params.id
+    billModel.deleteNetBill(FoodId).then((DeleteRes)=>{
+          res.redirect('/food')
     })
 }
 exports.DeleteOtherBillController = (req,res,next)=>{

@@ -95,6 +95,40 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
             })
         })
     }
+    exports.getfoodsdata = (id)=>{
+        return new Promise((resolve, reject) => {
+            mongoose.connect(globalconnect).then(()=>{
+               return  billss.find({userid:id,billtype:"food"})
+            }).then((bills)=>{
+                console.log(bills)
+                mongoose.disconnect()
+                resolve(bills)
+            }).catch((err)=>{
+                reject(err)
+            })
+        })
+    }
+    exports.addfoodnewbill = (name,value,date,photo,id)=>{
+        return new Promise((resolve, reject) => {
+            mongoose.connect(globalconnect).then(()=>{
+               let newFood = new billss({
+                name:name,
+                value:value,
+                date:date,
+                photo:photo,
+                userid:id,
+                billtype:"food"
+               })
+               return newFood.save()
+            }).then(()=>{
+                mongoose.disconnect()
+                resolve("added")
+            }).catch((err)=>{
+                mongoose.disconnect()
+                reject(err)
+            })
+        })
+    }
     exports.getclothesdata = (id)=>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
@@ -269,7 +303,53 @@ exports.addphonenewbillForApi = (name,value,date,photo,userid) =>{
         })
     })
 }
+exports.addothernewbillForApi = (name,value,date,photo,userid) =>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            let newbill = new billss({
+                    
+                name:name,
+                value:value,
+                date:date,
+                photo:photo,
+                userid:userid,
+                billtype:"other"
+            })
+            return newbill.save()
+        }).then(()=>{
+            mongoose.disconnect()
+            resolve('added')
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
 
+
+
+exports.addfoodnewbillForApi = (name,value,date,photo,userid) =>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            let newbill = new billss({
+                    
+                name:name,
+                value:value,
+                date:date,
+                photo:photo,
+                userid:userid,
+                billtype:"food"
+            })
+            return newbill.save()
+        }).then(()=>{
+            mongoose.disconnect()
+            resolve('added')
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
 exports.getphonesdata = (id)=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{
@@ -400,6 +480,20 @@ exports.getNetsdataForApi = (id)=>{
         mongoose.connect(globalconnect).then(()=>{
             return billss.find({userid:id,billtype:"net"})
         }).then((bills)=>{
+            mongoose.disconnect()
+            resolve(bills)
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+exports.getFoodsdataForApi = (id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            return billss.find({userid:id,billtype:"food"})
+        }).then((bills)=>{
+            console.log(bills)
             mongoose.disconnect()
             resolve(bills)
         }).catch((err)=>{

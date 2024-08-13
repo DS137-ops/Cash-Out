@@ -68,7 +68,7 @@ router.get('/getwaterbills/:id' , (req,res,next)=>{
     res.json({error:false,data4:{NetData},message:"success"})
 
   }).catch(()=>{
-    res.json({error:true,data2:{}})
+    res.json({error:true,data4:{}})
   })
 })
 
@@ -77,7 +77,7 @@ router.get('/getphonebills/:id' , (req,res,next)=>{
   billmodel.getphonesdataForApi(req.params.id).then((NetData)=>{
     res.json({error:false,data4:{NetData},message:"success"})
   }).catch(()=>{
-    res.json({error:true,data3:{}})
+    res.json({error:true,data4:{}})
   })
 })
 
@@ -89,13 +89,21 @@ router.get('/getNetbills/:id' , (req,res,next)=>{
   })
 })
 
+router.get('/getFoodbills/:id' , (req,res,next)=>{
+  billmodel.getFoodsdataForApi(req.params.id).then((FoodData)=>{
+    res.json({error:false,data4:{NetData},message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data4:{}})
+  })
+})
+
 
 
 router.get('/getOtherbills/:id' , (req,res,next)=>{
-  billmodel.getOthersdataForApi(req.params.id).then((NetData)=>{
+  billmodel.getOthersdataForApi(req.params.id).then((OtherData)=>{
     res.json({error:false,data4:{NetData},message:"success"})
   }).catch(()=>{
-    res.json({error:true,data5:{}})
+    res.json({error:true,data4:{}})
   })
 })
 
@@ -195,8 +203,24 @@ router.post('/addNetBill/:id',body,(req,res)=>{
     res.json({error:true  , message:'not success'})
   })
 })
+
 router.post('/addElectBill/:id',body,(req,res)=>{
   billmodel.addelectnewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
+    authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
+      authmodel.getuserPadget(req.params.id).then((usrbud)=>{
+        if(usrbud.padget<=0){
+          sendEmail(usrbud.email,usrbud.padget)
+      }
+      res.json({error:false  , message:'success'})
+      })
+     
+    })
+  }).catch((err)=>{
+    res.json({error:true  , message:'not success'})
+  })
+})
+router.post('/addOtherBill/:id',body,(req,res)=>{
+  billmodel.addothernewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
     authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
       authmodel.getuserPadget(req.params.id).then((usrbud)=>{
         if(usrbud.padget<=0){
@@ -256,5 +280,22 @@ router.post('/addPhoneBill/:id',body,(req,res)=>{
     res.json({error:true  , message:'not success'})
   })
 })
+
+router.post('/addFoodBill/:id',body,(req,res)=>{
+  billmodel.addfoodnewbillForApi(req.body.name,req.body.value,req.body.date,req.body.imgUri,req.params.id).then((rr)=>{
+    authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
+      authmodel.getuserPadget(req.params.id).then((usrbud)=>{
+        if(usrbud.padget<=0){
+          sendEmail(usrbud.email,usrbud.padget)
+      }
+      res.json({error:false  , message:'success'})
+      })
+    })
+    
+  }).catch((err)=>{
+    res.json({error:true  , message:'not success'})
+  })
+})
+
 module.exports = router;
 
