@@ -17,7 +17,11 @@ exports.userSpeciallogin = (req,res,next)=>{
 }
 
 exports.showminning = (req,res,next)=>{
-        res.render('minning' )
+    try{
+        res.render('minning')
+    }catch(err){
+        res.status(500).send('Internal Server Error yes');
+    }
 }
 const arrMinn=[]
 exports.startMinningController = (req,res,next)=>{
