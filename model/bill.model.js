@@ -115,7 +115,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                 name:name,
                 value:value,
                 date:date,
-                photo:photo,
+                photo:'https://graduate-final.onrender.com/files/billImages/uploads/'+photo,
                 userid:id,
                 billtype:"food"
                })
@@ -193,8 +193,6 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     exports.addwaternewbill = (name,value,date,photo,userid)=>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
-                
-            }).then(()=>{
                 let newbook = new billss({
                     
                     name:name,
@@ -382,7 +380,7 @@ exports.addOtherBill = (name,value,date,photo,userid)=>{
                 name:name,
                 value:value,
                 date:date,
-                photo:photo,
+                photo:'https://graduate-final.onrender.com/files/billImages/uploads/'+photo,
                 userid:userid,
                 billtype:"other"
             })
