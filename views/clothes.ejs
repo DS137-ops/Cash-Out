@@ -374,7 +374,7 @@ font-size: 22px;
               <td><%- billclothes.value %>$</td>
               <td><%- billclothes.brand %></td>
               <td><%- billclothes.date %></td>
-              <td><img width="50" height="50" src="/uploads/<%= billclothes.photo %>" alt=""></td>
+              <td><img width="50" height="50" src="<%= billclothes.photo %>" alt=""></td>
               <td><a class="btn btn-danger" href="/clothes/deleteClothes/<%= billclothes._id %>" >Delete</a></td>
             </tr>
             <% } %>

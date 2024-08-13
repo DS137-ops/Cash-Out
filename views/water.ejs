@@ -375,7 +375,7 @@ font-size: 22px;
               <th scope="row"><%- datawater.name  %></th>
               <td><%- datawater.value  %></td>
               <td><%- datawater.date  %></td>
-              <td><img width="50" height="50" src="/uploads/<%= datawater.photo %>" alt=""></td>
+              <td><img width="50" height="50" src="<%= datawater.photo %>" alt=""></td>
               <td><a class="btn btn-danger" href="/water/deleteWater/<%= datawater._id %>" >Delete</a></td>
             </tr>
             <% } %>

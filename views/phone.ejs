@@ -366,7 +366,7 @@ font-size: 22px;
               <th scope="row"><%- dataphone.name  %></th>
               <td><%- dataphone.value  %></td>
               <td><%- dataphone.date  %></td>
-              <td><img width="50" height="50" src="/uploads/<%= dataphone.photo %>" alt=""></td>
+              <td><img width="50" height="50" src="<%= dataphone.photo %>" alt=""></td>
               <td><a class="btn btn-danger" href="/phone/deletePhone/<%= dataphone._id %>" >Delete</a></td>
             </tr>
             <% } %>
