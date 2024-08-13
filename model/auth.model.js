@@ -273,10 +273,10 @@ exports.updateBudgetBillForApi = (val,sdate,edate,id)=>{
 }
 
 
-exports.postupdateprofile = ( name , password , city , email , id )=>{
+exports.postupdateprofile = ( name , password , city , address , email , id )=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{
-           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:password , city:city , email:email}}  )
+           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:password , city:city , address:address , email:email}}  )
         }).then(()=>{
             resolve("updated")
         })

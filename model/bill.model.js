@@ -145,8 +145,6 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     exports.addclothesnewbill = (name,value,brand,date,photo,userid)=>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
-                
-            }).then(()=>{
                 let newbook = new billss({
                     
                     name:name,
@@ -171,8 +169,6 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     exports.addclothesnewbillForApi = (name,value,brand,date,photo,userid)=>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
-                
-            }).then(()=>{
                 let newbook = new billss({
                     
                     name:name,
@@ -181,7 +177,8 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                     date:date,
                     photo:photo,
                     userid:userid,
-                    billtype:"clothes"
+                    billtype:"clothes",
+                    
                 })
                 return newbook.save()
             }).then(()=>{

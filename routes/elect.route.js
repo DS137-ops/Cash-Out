@@ -4,21 +4,31 @@ const router = require('express').Router()
 const GuardAuth = require('./guardAuth')
 const multer = require('multer')
 const body = require('express').urlencoded({ extended: true })
-
+const storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+      callback(null, 'assets/uploads'); // Specify the upload directory
+    },
+    filename: function (req, file, callback) {
+      const imageUrl = Date.now() + '.jpg'; // Generate a unique filename
+      callback(null, imageUrl);
+    }
+  });
+  
+  const upload = multer({ storage: storage }).single(['photo']);
 
 
 router.get('/', GuardAuth.isAuth, electcontroller.getelectpage)
 
-router.post('/',multer({
-    storage : multer.diskStorage({
-        destination:function(req,file,cb){
-            cb(null,'assets/uploads')
-        },
-        filename:function(req,file,cb){
-            cb(null,Date.now()+'.'+file.originalname)
-        }
-    })
-}).single(["photo"]), GuardAuth.isAuth,electcontroller.addnewelectbill)
+router.post('/',function (req, res,next) {
+    upload(req, res, function (err) {
+      if (err) {
+        return res.end("Error uploading file." + err);
+      }
+      
+      next()
+
+    });
+  }, GuardAuth.isAuth,electcontroller.addnewelectbill)
 
 
 router.get('/deleteElect/:id' , electcontroller.DeleteBillController)
