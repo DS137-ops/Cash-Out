@@ -12,6 +12,8 @@ const storage = multer.diskStorage({
       callback(null, imageUrl);
     }
   });
+  const upload = multer({ storage: storage }).single(['photo']);
+
 router.get('/', GuardAuth.isAuth, electcontroller.getwaterpage)
 
 
