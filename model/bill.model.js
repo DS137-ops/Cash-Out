@@ -488,6 +488,19 @@ exports.getNetsdataForApi = (id)=>{
         })
     })
 }
+exports.getClothesdataForApi = (id)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            return billss.find({userid:id,billtype:"clothes"})
+        }).then((bills)=>{
+            mongoose.disconnect()
+            resolve(bills)
+        }).catch((err)=>{
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
 exports.getFoodsdataForApi = (id)=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{

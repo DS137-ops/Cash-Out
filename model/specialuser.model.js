@@ -18,7 +18,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     exports.postSpecialUser = (email, password) => {
         return new Promise((resolve, reject) => {
             try {
-                mongoose.connect(globalconnect).then(() => {
+                mongoose.connect(uri).then(() => {
                     return users.findOne({ email: email })
                 }).then((userspc) => {
                     if (userspc) {

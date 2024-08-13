@@ -88,9 +88,16 @@ router.get('/getNetbills/:id' , (req,res,next)=>{
     res.json({error:true,data4:{}})
   })
 })
+router.get('/getClothebills/:id' , (req,res,next)=>{
+  billmodel.getClothesdataForApi(req.params.id).then((clothData)=>{
+    res.json({error:false,data6:{clothData},message:"success"})
+  }).catch(()=>{
+    res.json({error:true,data6:{}})
+  })
+})
 
 router.get('/getFoodbills/:id' , (req,res,next)=>{
-  billmodel.getFoodsdataForApi(req.params.id).then((FoodData)=>{
+  billmodel.getFoodsdataForApi(req.params.id).then((NetData)=>{
     res.json({error:false,data4:{NetData},message:"success"})
   }).catch(()=>{
     res.json({error:true,data4:{}})
@@ -100,7 +107,7 @@ router.get('/getFoodbills/:id' , (req,res,next)=>{
 
 
 router.get('/getOtherbills/:id' , (req,res,next)=>{
-  billmodel.getOthersdataForApi(req.params.id).then((OtherData)=>{
+  billmodel.getOthersdataForApi(req.params.id).then((NetData)=>{
     res.json({error:false,data4:{NetData},message:"success"})
   }).catch(()=>{
     res.json({error:true,data4:{}})
