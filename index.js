@@ -22,6 +22,7 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'assests')));
 app.use('/files/billImages',express.static(path.join(__dirname, 'assets')));
+
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 const flash = require('connect-flash')
@@ -43,6 +44,8 @@ const updateprofileRoute = require('./routes/updateprofile.route')
 const tipsRoute = require('./routes/tips.route')
 const showReminderRoute = require('./routes/reminders.route')
 const specialUserLogin = require('./routes/minning.route')
+const specialUserLogin2 = require('./routes/minning2.route')
+
 app.post('/logout', (req, res, next) => {
     req.session.destroy(() => {
         res.redirect('/login')
@@ -76,6 +79,8 @@ app.use("/updateProfileInfo" , updateprofileRoute)
 app.use("/tips",tipsRoute)
 app.use("/loginMinning",specialUserLogin)
 app.use("/showminn",specialUserLogin)
+app.use("/startminning",specialUserLogin2)
+app.use("/startminning2",specialUserLogin2)
 //app.use("/minning",minningRoute)
 app.listen(7000, () => {
     console.log('server is running')

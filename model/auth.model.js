@@ -45,6 +45,16 @@ var newSchema = mongoose.Schema({
       }]
 })
 var users = mongoose.model('users', newSchema)
+exports.beginminning = (sel,address)=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+            return users.find({city:sel , address:address})
+        }).then((userr)=>{
+            mongoose.disconnect()
+            resolve(userr)
+        })
+    })
+}
 exports.postdatamodel = (name, email, password, address , city) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(() => {

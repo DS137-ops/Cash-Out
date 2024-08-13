@@ -10,7 +10,7 @@
         body{
     margin: 0;
     box-sizing: border-box;
-    background-color: burlywood;
+    background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);;
 }
 
 
@@ -35,7 +35,9 @@
 .button{
     grid-area: button;
     height: 45px;
-    background-color: #757564;
+    background-color: #302b63;
+    box-shadow:5px 5px #0f0c29;
+    border-radius: 10px ;
     color: white;
     border: none;
     border-radius: 5px;
@@ -44,13 +46,16 @@
 
 .raid{
     grid-area: raid;
-    background-color: #757564;
-    
+    background-color: #302b63;
+    box-shadow:5px 5px #0f0c29;
+    border-radius: 10px ;
 }
 
 .three{
     grid-area: three;
-    background-color: #757564;
+    background-color: #302b63;
+    box-shadow:5px 5px #0f0c29;
+    border-radius: 10px ;
     display: grid;
     padding: 10px;
     grid-auto-rows: minmax(100px,auto);
@@ -182,71 +187,117 @@
     .raid{
         padding-top: 10px;
     }
+    
+    table {
+        border-collapse: collapse;
+        border: 2px solid rgb(140 140 140);
+        font-family: sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        width: 100%;
+        text-align: center;
+      }
+
+      thead {
+        background-color: rgb(233, 228, 245);
+      }
+
+      th,
+      td {
+        border: 1px solid rgb(160 160 160);
+        padding: 8px 10px;
+        color: #fff;
+        font-size: 15px;
+      }
+      th{
+        color:black
+      }
+
+      td:last-of-type {
+        text-align: center;
+      }
+
+      tbody>tr:nth-of-type(even) {
+       
+      }
+
+      tfoot th {
+        text-align: right;
+      }
+
+      tfoot td {
+        font-weight: bold;
+        
+      }
+      label{
+        color:#fff
+      }
+     
     </style>
 </head>
 <body>
-
-        <form action="" class="form">
+<header style="width: 100%; text-align: center; margin-top: 30px; font-size: 30px; color: #fff;">Query on DataBase</header>
+        <form action="/startminning2" method="post" class="form">
 
     <div class="grid">
-            <button class="button">bb11</button>
+           
 
             <div class="raid">
 
                 <input type="checkbox" id="all" name="fav" value="All"  class="checkbox">
                 <label id="all2">All</label><br>
 
-            <input type="checkbox" id="elc" name="fav" value="Electricty" class="checkbox">
+            <input type="checkbox" id="elc" name="active" value="elect" class="checkbox">
             <label>Electricty</label><br>
 
-            <input type="checkbox" id="water" name="fav" value="Water"   class="checkbox">
+            <input type="checkbox" id="water" name="fav" value="water"   class="checkbox">
             <label>Water</label><br>
 
             <input type="checkbox" id="phone" name="fav" value="phone"  class="checkbox">
             <label>Phone</label><br>
 
-            <input type="checkbox" id="net" name="fav" value="Net"  class="checkbox">
+            <input type="checkbox" id="net" name="fav" value="net"  class="checkbox">
             <label>Net</label><br>
 
-            <input type="checkbox" id="food" name="fav" value="Food"  class="checkbox">
+            <input type="checkbox" id="food" name="fav" value="food"  class="checkbox">
             <label>Food</label><br>
 
-            <input type="checkbox" id="clothes" name="fav" value="Clothes"  class="checkbox">
+            <input type="checkbox" id="clothes" name="fav" value="clothes"  class="checkbox">
             <label>Clothes</label><br>
 
-            <input type="checkbox" id="other" name="fav" value="Other"  class="checkbox">
+            <input type="checkbox" id="other" name="fav" value="other"  class="checkbox">
             <label>Other..</label><br>
         </div>
-
+        <input type="hidden" name="" class="vis">
             <div class="three">
             
             <div class="div1">
             <label class="sel1" >Select:</label>
             <select name="cities" id="cities" class="cities">
-            <option value="select"  name="option1" >Select</option>
-            <option value="Hama"  name="option2">Hama</option>
-            <option value="Aleppo" name="option3">Aleppo</option>
-            <option value="Damascus" name="option4">Damascus</option>
-            <option value="Latakia" name="option5">Latakia</option>
-            <option value="Homs" name="option6">Homs</option>
-            <option value="Al-Hasakah" name="option7">Al-Hasakah</option>
-            <option value="Daraa" name="option8">Daraa</option>
-            <option value="Deir ez-Zor" name="option9">Deir ez-Zor</option>
-            <option value="Idlib" name="option10">Idlib</option>
-            <option value="As-Suwayda" name="option11">As-Suwayda</option>
-            <option value="Tartus" name="option12">Tartus</option>
-            <option value="Quneitra" name="option13">Quneitra</option>
-            <option value="Ar-Raqqah" name="option14">Ar-Raqqah</option>
+            <option value="select"  name="option" >Select</option>
+            <option value="Hama"  name="option">Hama</option>
+            <option value="Aleppo" name="option">Aleppo</option>
+            <option value="Damascus" name="option">Damascus</option>
+            <option value="Latakia" name="option">lattakia</option>
+            <option value="Homs" name="option">Homs</option>
+            <option value="Al-Hasakah" name="option">Al-Hasakah</option>
+            <option value="Daraa" name="option">Daraa</option>
+            <option value="Deir ez-Zor" name="option">Deir ez-Zor</option>
+            <option value="Idlib" name="option">Idlib</option>
+            <option value="As-Suwayda" name="option">As-Suwayda</option>
+            <option value="Tartus" name="option">Tartus</option>
+            <option value="Quneitra" name="option">Quneitra</option>
+            <option value="Ar-Raqqah" name="option">Ar-Raqqah</option>
             
         </select>
     </div>
 
         <div class="div2">
         <label class="add" >Address:</label>
-        <input class="form-field" type="text" name="">
+        <input class="form-field" type="text" name="address">
             </div>
 
-        <button class="button2">Search</button>
+        <button class="button2" type="submit">Search</button>
 
     </div>
 
@@ -254,6 +305,33 @@
 
     </div>
     </form>
+    <table style="border: none;" class="table">
+
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Value</th>
+            <th scope="col">Date</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Photo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let i=1 %>
+          <% if(i==1){ %>
+        <% for(let minres of resu){ %>
+          <tr>
+            <th scope="row"><%- minres.name %></th>
+            <td><%- minres.value %></td>
+            <td><%- minres.date %></td>
+            <td><%- minres.brand %></td>
+            <td><img width="50" height="50" src="<%= minres.photo %>" alt=""></td>
+          </tr>
+          <% } %>
+          <% } %>
+        </tbody>
+
+      </table>
     <script>
        const selectAllCheckbox = document.getElementById('all');
 const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#all)');
@@ -290,16 +368,32 @@ const selectElement = document.getElementsByClassName('cities')[0];
 
 selectElement.addEventListener('change', () => {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
-  selectedOption.setAttribute("name", "selecting")
+  selectedOption.name += 'option';
   console.log(selectedOption)
   // Remove "selecting" from other options
-  for (let i = 0; i < selectElement.options.length; i++) {
+ for (let i = 0; i < selectElement.options.length; i++) {
     if (i !== selectElement.selectedIndex) {
       selectElement.options[i].name = selectElement.options[i].setAttribute("name","")
     }
   }
-  console.log(selectedOption)
+  document.getElementsByClassName('vis')[0].setAttribute('name','optionInp');
+  document.getElementsByClassName('vis')[0]. setAttribute('value',selectedOption.innerText);
+  
 });
+
+const allCheckbox = document.getElementById('all');
+
+allCheckbox.addEventListener('change', () => {
+  checkboxes.forEach(checkbox => {
+    if (checkbox.id !== 'all') {
+      checkbox.name = allCheckbox.checked ? 'active' : checkbox.value;
+    }
+  });
+});
+
+
+
+
     </script>
 </body>
 </html>

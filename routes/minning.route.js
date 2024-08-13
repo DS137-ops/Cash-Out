@@ -7,6 +7,6 @@ const body = require('express').urlencoded({ extended: true })
 const GuardAuth = require('./guardAuth')
 
 router.get('/',minningcontroller.getLoginMinning)
-router.get('/minning',minningcontroller.showminning)
+
 router.post('/', body, minningcontroller.userSpeciallogin)
 module.exports = router;

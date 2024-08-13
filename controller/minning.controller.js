@@ -17,6 +17,17 @@ exports.userSpeciallogin = (req,res,next)=>{
 }
 
 exports.showminning = (req,res,next)=>{
-   
-    res.render('minning')
+        res.render('minning' )
+}
+const arrMinn=[]
+exports.startMinningController = (req,res,next)=>{
+    authmodel.beginminning(req.body.optionInp,req.body.address).then((minnRes)=>{
+        for(let i=0;i<minnRes.length;i++){
+        arrMinn.push(minnRes[i]._id.toString())
+        }
+        billModel.getMinUsers(arrMinn,req.body.active).then((resu)=>{
+            res.render('minning',{resu:resu})
+        })
+       
+    })
 }

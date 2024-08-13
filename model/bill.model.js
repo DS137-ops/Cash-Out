@@ -22,7 +22,18 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
         
     })
     var billss = mongoose.model('bills', billSchema)
-    
+    exports.getMinUsers = (id,type,address)=>{
+        return new Promise((resolve, reject) => {
+            mongoose.connect(globalconnect).then(()=>{
+                return billss.find({ userid: { $in: id } ,billtype:type })
+            }).then((usr1)=>{
+                mongoose.disconnect()
+                resolve(usr1)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        })
+    }
     exports.addelectnewbill = (name,value,date,photo,userid) =>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
