@@ -81,6 +81,9 @@ app.use("/loginMinning",specialUserLogin)
 app.use("/showminn",specialUserLogin)
 app.use("/startminning",specialUserLogin2)
 app.use("/startminning2",specialUserLogin2)
+app.use("/test",(req,res)=>{
+    res.render("/")
+})
 //app.use("/minning",minningRoute)
 app.listen(7000, () => {
     console.log('server is running')
