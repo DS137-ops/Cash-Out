@@ -240,10 +240,7 @@
         <form action="/startminning2" method="post" class="form">
 
     <div class="grid">
-           
-
             <div class="raid">
-
                 <input type="checkbox" id="all" name="fav" value="All"  class="checkbox">
                 <label id="all2">All</label><br>
 
@@ -317,18 +314,15 @@
           </tr>
         </thead>
         <tbody>
-          <% let i=1 %>
-          <% if(i==1){ %>
-        <% for(let minres of resu){ %>
+         
           <tr>
-            <th scope="row"><%- minres.name %></th>
-            <td><%- minres.value %></td>
-            <td><%- minres.date %></td>
-            <td><%- minres.brand %></td>
-            <td><img width="50" height="50" src="<%= minres.photo %>" alt=""></td>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><img width="50" height="50" src="" alt=""></td>
           </tr>
-          <% } %>
-          <% } %>
+        
         </tbody>
 
       </table>
