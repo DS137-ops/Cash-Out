@@ -4,7 +4,7 @@ const router = require('express').Router()
 const GuardAuth = require('./guardAuth')
 const multer = require('multer')
 const body = require('express').urlencoded({ extended: true })
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
     destination: function (req, file, callback) {
       callback(null, 'assets/uploads'); // Specify the upload directory
     },
@@ -16,6 +16,18 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage }).single(['photo']);
 
+
+
+*/
+
+
+
+  const storage = multer.diskStorage({
+    destination: './uploads/',
+    filename: function(req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+  });
 
 router.get('/', GuardAuth.isAuth, electcontroller.getelectpage)
 

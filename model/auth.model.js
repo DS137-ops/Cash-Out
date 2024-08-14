@@ -290,7 +290,9 @@ exports.postupdateprofile = ( name , password , city , address , email , id )=>{
 exports.postupdateprofileForApi = ( name , password , city , address  , id )=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{
-           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:password , city:city , address:address }}  )
+            return bcrypt.hash(password,10)
+        }).then((hpass)=>{
+           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:hpass , city:city , address:address }}  )
         }).then(()=>{
             return users.findById(id)
         }).then((user)=>{
