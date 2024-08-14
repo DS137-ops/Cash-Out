@@ -59,14 +59,13 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     }
 
     exports.addelectnewbillForApi = (name,value,date,photo,userid) =>{
-        console.log(photo)
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
                     let newbook = new billss({
                         name:name,
                         value:value,
                         date:date,
-                        photo:'https://graduate-final.onrender.com/files/billImages/uploads/'+photo,
+                        photo:photo,
                         userid:userid,
                         billtype:"elect"
                     })
@@ -215,8 +214,6 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
     exports.addwaternewbillForApi = (name,value,date,photo,userid)=>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
-                
-            }).then(()=>{
                 let newbook = new billss({
                     
                     name:name,
