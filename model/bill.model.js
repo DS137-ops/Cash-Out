@@ -166,27 +166,25 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
         })
     }
 
-    exports.addclothesnewbillForApi = (name,value,brand,date,photo,userid)=>{
+    exports.addclothesnewbillForApi = (name,value , brand ,date,photo,userid)=>{
         return new Promise((resolve, reject) => {
             mongoose.connect(globalconnect).then(()=>{
-                let newbook = new billss({
-                    
+                console.log(1)
+                let newBook = new billss({
                     name:name,
                     value:value,
                     brand:brand,
                     date:date,
                     photo:photo,
-                    userid:userid,
-                    billtype:"clothes",
-                    
+                    userid:userid
                 })
-                return newbook.save()
+                return newBook.save()
             }).then(()=>{
                 mongoose.disconnect()
-                resolve('added')
+                resolve('AC')
             }).catch((err)=>{
                 mongoose.disconnect()
-                reject(err)
+                reject('AC '+ err)
             })
         })
     }
