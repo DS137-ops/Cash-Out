@@ -66,7 +66,7 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                         name:name,
                         value:value,
                         date:date,
-                        photo:photo,
+                        photo:'https://graduate-final.onrender.com/files/billImages/uploads/'+photo,
                         userid:userid,
                         billtype:"elect"
                     })
