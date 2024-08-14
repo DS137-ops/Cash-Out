@@ -287,10 +287,10 @@ exports.postupdateprofile = ( name , password , city , address , email , id )=>{
     })
 }
 
-exports.postupdateprofileForApi = ( name , password , city , address , email , id )=>{
+exports.postupdateprofileForApi = ( name , password , city , address  , id )=>{
     return new Promise((resolve, reject) => {
         mongoose.connect(globalconnect).then(()=>{
-           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:password , city:city , address:address , email:email}}  )
+           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:password , city:city , address:address }}  )
         }).then(()=>{
             return users.findById(id)
         }).then((user)=>{
