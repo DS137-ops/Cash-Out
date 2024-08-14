@@ -176,7 +176,8 @@ globalconnect = "mongodb+srv://feadkaffoura:YcQJ6vJSgdBFwX9b@cluster0.v3b0sud.mo
                     brand:brand,
                     date:date,
                     photo:photo,
-                    userid:userid
+                    userid:userid,
+                    billtype:'clothes'
                 })
                 return newBook.save()
             }).then(()=>{

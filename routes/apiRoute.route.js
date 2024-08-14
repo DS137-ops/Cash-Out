@@ -214,7 +214,16 @@ router.post('/addNetBill/:id',body,(req,res)=>{
 router.post('/addClothesBill/:id' , body , (req,res)=>{
   console.log(2)
   billmodel.addclothesnewbillForApi(req.body.name,req.body.value,req.body.brand,req.body.date,req.body.imgUri,req.params.id).then(()=>{
-console.log(3)
+    authmodel.updatePadget(req.params.id,req.body.value).then(()=>{
+      authmodel.getuserPadget(req.params.id).then((usrbud)=>{
+        if(usrbud.padget<=0){
+          sendEmail(usrbud.email,usrbud.padget)
+      }
+      res.json({error:false  , message:'success'})
+      })
+    })  
+  }).catch((err)=>{
+    res.json({error:true  , message:'not success'})
   })
 })
 
