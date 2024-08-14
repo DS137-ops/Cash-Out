@@ -287,6 +287,22 @@ exports.postupdateprofile = ( name , password , city , address , email , id )=>{
     })
 }
 
+exports.postupdateprofileForApi = ( name , password , city , address , email , id )=>{
+    return new Promise((resolve, reject) => {
+        mongoose.connect(globalconnect).then(()=>{
+           return users.updateMany({_id:new mongoose.Types.ObjectId(id)} , {$set:{name:name , password:password , city:city , address:address , email:email}}  )
+        }).then(()=>{
+            return users.findById(id)
+        }).then((user)=>{
+            resolve(user)
+        })
+        .catch((err)=>{
+            mongoose.disconnect()
+            reject("not updated")
+        })
+    })
+}
+
 
 exports.PostDataReminder = (val , date , id)=>{
     return new Promise((resolve, reject) => {

@@ -55,6 +55,14 @@ router.post('/register', body, (req,res)=>{
   
 })
 
+router.post('/updateProfile/:id',body,(req,res)=>{
+  authmodel.postupdateprofileForApi(req.body.name,req.body.password , req.body.city , req.body.address , req.body.email , req.params.id).then((Editing)=>{
+    res.json({error:false , Editing , message:'success'})
+  }).catch((err)=>{
+    res.json({error:true ,err , message:'no response'})
+  })
+})
+
 router.get('/getelectbills/:id' , (req,res,next)=>{
     billmodel.getelectsdataForApi(req.params.id).then((NetData)=>{
       res.json({error:false,data4:{NetData},message:"success"})
